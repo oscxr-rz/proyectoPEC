@@ -10,7 +10,7 @@
 <body>
     @include('layouts.nav')
     <main>
-        <h1>inicio</h1>
+        
     </main>
     @include('layouts.footer')
 </body>
