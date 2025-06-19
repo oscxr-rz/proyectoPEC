@@ -5,5 +5,6 @@
         <li><a href="{{ route('admin.donaciones') }}">Donaciones</a></li>
         <li><a href="{{ route('admin.estadisticas') }}">Estadisticas</a></li>
         <li><a href="{{ route('admin.ventas') }}">Ventas</a></li>
+        <li><a href="{{ route('admin.proyectos') }}">Proyectos</a></li>
     </ul>
 </nav>

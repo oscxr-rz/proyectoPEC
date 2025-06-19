@@ -69,6 +69,13 @@
                                             <div class="w-2 h-2 bg-yellow-400 rounded-full mr-2"></div>
                                             {{ $donacion['estado'] }}
                                         </span>
+                                    @elseif ($donacion['estado'] == 'Cancelada')
+                                        <span class="inline-flex items-center px-6 py-3 rounded-full text-sm font-medium bg-gradient-to-r from-red-600/20 to-red-700/20 border border-red-500/30 text-red-300 shadow-lg">
+                                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                            </svg>
+                                            {{ $donacion['estado'] }}
+                                        </span>
                                     @else
                                         <span class="inline-flex items-center px-6 py-3 rounded-full text-sm font-medium bg-gradient-to-r from-gray-600/20 to-slate-600/20 border border-gray-500/30 text-gray-300 shadow-lg">
                                             {{ $donacion['estado'] }}
@@ -88,6 +95,20 @@
                                         </svg>
                                     </div>
                                     <p class="text-emerald-300 font-medium">¡Gracias por tu donación! Ha sido recibida y procesada exitosamente.</p>
+                                </div>
+                            </div>
+                        @endif
+
+                        <!-- Mensaje especial para donaciones canceladas -->
+                        @if ($donacion['estado'] == 'Cancelada')
+                            <div class="bg-gradient-to-r from-red-600/10 via-red-700/10 to-red-800/10 border-b border-red-500/20 px-8 py-4">
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 bg-gradient-to-r from-red-500 to-red-600 rounded-full flex items-center justify-center mr-3 shadow-lg">
+                                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                        </svg>
+                                    </div>
+                                    <p class="text-red-300 font-medium">Esta donación ha sido cancelada.</p>
                                 </div>
                             </div>
                         @endif
@@ -155,7 +176,7 @@
                                 @endforeach
                             </div>
 
-                            @if ($donacion['estado'] != 'Recibida')
+                            @if ($donacion['estado'] != 'Recibida' && $donacion['estado'] != 'Cancelada')
                                 <div class="border-t border-gray-700/50 pt-6">
                                     <form action="{{ route('donacion.cancelar') }}" method="POST">
                                         @csrf

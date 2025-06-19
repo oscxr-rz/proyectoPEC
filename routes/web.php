@@ -62,4 +62,7 @@ Route::prefix('/admin')->group(function () {
     Route::get('/estadisticas', [AdminEstadisticasController::class, 'index'])->name('admin.estadisticas');
     Route::get('/ventas', [AdminVentasController::class, 'index'])->name('admin.ventas');
     Route::get('/proyectos', [AdminProyectosController::class, 'index'])->name('admin.proyectos');
+    Route::post('/proyectos', [AdminProyectosController::class, 'create'])->name('admin.proyectos.post');
+    Route::put('/proyectos', [AdminProyectosController::class, 'put'])->name('admin.proyectos.put');
+    Route::delete('/proyectos', [AdminProyectosController::class, 'delete'])->name('admin.proyectos.delete');
 });
