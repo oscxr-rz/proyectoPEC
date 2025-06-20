@@ -59,7 +59,7 @@
         }
 
         // Cerrar modal con ESC y navegación con flechas
-        document.addEventListener('keydown', function (e) {
+        document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 closeModal();
             } else if (e.key === 'ArrowRight' && currentImages.length > 1) {
@@ -336,609 +336,645 @@
         </div>
 
         @if (!empty($primero))
-        <div class="mb-16 sm:mb-32">
-            <div class="flex items-center mb-10 sm:mb-20">
-                <div
-                    class="semester-indicator text-white px-4 sm:px-8 lg:px-12 py-4 sm:py-6 lg:py-8 rounded-r-full shadow-2xl hover-glow transition-all duration-300 relative leaf-decoration">
-                    <h3 class="text-2xl sm:text-4xl lg:text-5xl font-bold">1er Semestre</h3>
-                </div>
-                <div
-                    class="flex-1 h-2 sm:h-3 bg-gradient-to-r from-green-500 to-transparent ml-4 sm:ml-10 rounded-full shadow-lg">
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
-                @foreach ($primero as $trabajo)
-                <div
-                    class="project-card glass-effect rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden border border-green-200/50 hover-glow">
-                    <div class="bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500 h-2 sm:h-3"></div>
-
-                    <div class="p-4 sm:p-6 lg:p-10">
-                        <div class="mb-6 sm:mb-10">
-                            <div class="flex flex-wrap gap-2 sm:gap-4 mb-4 sm:mb-8">
-                                <span
-                                    class="bg-gradient-to-r from-green-700 to-green-800 text-white px-3 py-1 sm:px-5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
-                                    🏫 Grupo: {{ $trabajo['grupo'] }}
-                                </span>
-                                <span
-                                    class="bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-3 py-1 sm:px-5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
-                                    🎯 {{ $trabajo['especialidad'] }}
-                                </span>
-                            </div>
-
-                            <h3
-                                class="text-xl sm:text-2xl lg:text-3xl font-bold text-green-800 mb-4 sm:mb-6 text-shadow">
-                                {{ $trabajo['titulo'] }}</h3>
-
-                            <div
-                                class="space-y-2 sm:space-y-4 text-green-700 mb-4 sm:mb-8 glass-effect-dark p-3 sm:p-6 rounded-xl sm:rounded-2xl text-sm sm:text-base">
-                                <p><span class="font-bold text-green-800">📚 UAC:</span> {{ $trabajo['UAC'] }}</p>
-                                <p><span class="font-bold text-green-800">📈 Progresión:</span> {{
-                                    $trabajo['progresion'] }}</p>
-                                <p><span class="font-bold text-green-800">📅 Fecha:</span> {{
-                                    $trabajo['fecha_realizacion'] }}</p>
-                            </div>
-
-                            <p
-                                class="text-green-800 leading-relaxed mb-6 sm:mb-10 glass-effect p-3 sm:p-6 rounded-xl sm:rounded-2xl border border-green-200 text-sm sm:text-base">
-                                {{ $trabajo['descripcion'] }}
-                            </p>
-                        </div>
-
-                        @if (!empty($trabajo['imagenes']))
-                        <div class="mb-6 sm:mb-10">
-                            <h4 class="text-lg sm:text-xl font-semibold text-green-800 mb-3 sm:mb-6 flex items-center">
-                                🖼️ Galería del Proyecto
-                            </h4>
-                            <div class="grid grid-cols-2 gap-2 sm:gap-4">
-                                @foreach ($trabajo['imagenes'] as $index => $imagen)
-                                <div class="image-grid-item group cursor-pointer relative rounded-xl sm:rounded-2xl overflow-hidden shadow-lg"
-                                    onclick="openModal([@foreach($trabajo['imagenes'] as $img)'{{ $img['imagen'] }}'@if(!$loop->last),@endif @endforeach], {{ $index }})">
-                                    <img src="{{ $imagen['imagen'] }}" alt="Imagen del proyecto"
-                                        class="w-full h-24 sm:h-36 object-cover transition-all duration-300 group-hover:scale-110">
-                                    <div
-                                        class="absolute inset-0 bg-gradient-to-t from-green-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-between p-2 sm:p-4">
-                                        <span class="text-white text-xs sm:text-sm font-semibold">Ver imagen</span>
-                                        <svg class="w-4 h-4 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor"
-                                            viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                                        </svg>
-                                    </div>
-                                </div>
-                                @endforeach
-                            </div>
-                        </div>
-                        @endif
-
-                        @if (!empty($trabajo['enlaces']))
-                        <div class="space-y-2 sm:space-y-4">
-                            @foreach ($trabajo['enlaces'] as $enlace)
-                            <a href="{{ $enlace['enlace'] }}" target="_blank"
-                                class="flex items-center justify-between bg-gradient-to-r from-green-600 to-emerald-600 text-white px-4 sm:px-8 py-3 sm:py-5 rounded-xl sm:rounded-2xl hover:from-green-500 hover:to-emerald-500 transition-all duration-300 group shadow-lg hover:shadow-xl text-sm sm:text-base">
-                                <span class="font-semibold flex items-center truncate pr-2">
-                                    🔗 {{ $enlace['titulo_enlace'] }}
-                                </span>
-                                <svg class="w-4 h-4 sm:w-6 sm:h-6 group-hover:translate-x-2 transition-transform duration-300 flex-shrink-0"
-                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
-                                    </path>
-                                </svg>
-                            </a>
-                            @endforeach
-                        </div>
-                        @endif
+            <div class="mb-16 sm:mb-32">
+                <div class="flex items-center mb-10 sm:mb-20">
+                    <div
+                        class="semester-indicator text-white px-4 sm:px-8 lg:px-12 py-4 sm:py-6 lg:py-8 rounded-r-full shadow-2xl hover-glow transition-all duration-300 relative leaf-decoration">
+                        <h3 class="text-2xl sm:text-4xl lg:text-5xl font-bold">1er Semestre</h3>
+                    </div>
+                    <div
+                        class="flex-1 h-2 sm:h-3 bg-gradient-to-r from-green-500 to-transparent ml-4 sm:ml-10 rounded-full shadow-lg">
                     </div>
                 </div>
-                @endforeach
+
+                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
+                    @foreach ($primero as $trabajo)
+                        <div
+                            class="project-card glass-effect rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden border border-green-200/50 hover-glow">
+                            <div class="bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500 h-2 sm:h-3"></div>
+
+                            <div class="p-4 sm:p-6 lg:p-10">
+                                <div class="mb-6 sm:mb-10">
+                                    <div class="flex flex-wrap gap-2 sm:gap-4 mb-4 sm:mb-8">
+                                        <span
+                                            class="bg-gradient-to-r from-green-700 to-green-800 text-white px-3 py-1 sm:px-5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
+                                            🏫 Grupo: {{ $trabajo['grupo'] }}
+                                        </span>
+                                        <span
+                                            class="bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-3 py-1 sm:px-5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
+                                            🎯 {{ $trabajo['especialidad'] }}
+                                        </span>
+                                    </div>
+
+                                    <h3
+                                        class="text-xl sm:text-2xl lg:text-3xl font-bold text-green-800 mb-4 sm:mb-6 text-shadow">
+                                        {{ $trabajo['titulo'] }}</h3>
+
+                                    <div
+                                        class="space-y-2 sm:space-y-4 text-green-700 mb-4 sm:mb-8 glass-effect-dark p-3 sm:p-6 rounded-xl sm:rounded-2xl text-sm sm:text-base">
+                                        <p><span class="font-bold text-green-800">📚 UAC:</span> {{ $trabajo['UAC'] }}
+                                        </p>
+                                        <p><span class="font-bold text-green-800">📈 Progresión:</span>
+                                            {{ $trabajo['progresion'] }}</p>
+                                        <p><span class="font-bold text-green-800">📅 Fecha:</span>
+                                            {{ $trabajo['fecha_realizacion'] }}</p>
+                                    </div>
+
+                                    <p
+                                        class="text-green-800 leading-relaxed mb-6 sm:mb-10 glass-effect p-3 sm:p-6 rounded-xl sm:rounded-2xl border border-green-200 text-sm sm:text-base">
+                                        {{ $trabajo['descripcion'] }}
+                                    </p>
+                                </div>
+
+                                @if (!empty($trabajo['imagenes']))
+                                    <div class="mb-6 sm:mb-10">
+                                        <h4
+                                            class="text-lg sm:text-xl font-semibold text-green-800 mb-3 sm:mb-6 flex items-center">
+                                            🖼️ Galería del Proyecto
+                                        </h4>
+                                        <div class="grid grid-cols-2 gap-2 sm:gap-4">
+                                            @foreach ($trabajo['imagenes'] as $index => $imagen)
+                                                <div class="image-grid-item group cursor-pointer relative rounded-xl sm:rounded-2xl overflow-hidden shadow-lg"
+                                                    onclick="openModal([@foreach ($trabajo['imagenes'] as $img)'{{ asset('storage/' . $img['imagen']) }}'@if (!$loop->last),@endif @endforeach], {{ $index }})">
+                                                    <img src="{{ asset('storage/' . $imagen['imagen']) }}"
+                                                        alt="Imagen del proyecto"
+                                                        class="w-full h-24 sm:h-36 object-cover transition-all duration-300 group-hover:scale-110">
+                                                    <div
+                                                        class="absolute inset-0 bg-gradient-to-t from-green-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-between p-2 sm:p-4">
+                                                        <span class="text-white text-xs sm:text-sm font-semibold">Ver
+                                                            imagen</span>
+                                                        <svg class="w-4 h-4 sm:w-6 sm:h-6 text-white" fill="none"
+                                                            stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="2"
+                                                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                @endif
+
+                                @if (!empty($trabajo['enlaces']))
+                                    <div class="space-y-2 sm:space-y-4">
+                                        @foreach ($trabajo['enlaces'] as $enlace)
+                                            <a href="{{ $enlace['enlace'] }}" target="_blank"
+                                                class="flex items-center justify-between bg-gradient-to-r from-green-600 to-emerald-600 text-white px-4 sm:px-8 py-3 sm:py-5 rounded-xl sm:rounded-2xl hover:from-green-500 hover:to-emerald-500 transition-all duration-300 group shadow-lg hover:shadow-xl text-sm sm:text-base">
+                                                <span class="font-semibold flex items-center truncate pr-2">
+                                                    🔗 {{ $enlace['titulo_enlace'] }}
+                                                </span>
+                                                <svg class="w-4 h-4 sm:w-6 sm:h-6 group-hover:translate-x-2 transition-transform duration-300 flex-shrink-0"
+                                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                                    </path>
+                                                </svg>
+                                            </a>
+                                        @endforeach
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
             </div>
-        </div>
         @endif
 
         @if (!empty($segundo))
-        <div class="mb-16 sm:mb-32">
-            <div class="flex items-center mb-10 sm:mb-20">
-                <div
-                    class="semester-indicator text-white px-4 sm:px-8 lg:px-12 py-4 sm:py-6 lg:py-8 rounded-r-full shadow-2xl hover-glow transition-all duration-300 relative leaf-decoration">
-                    <h3 class="text-2xl sm:text-4xl lg:text-5xl font-bold">2do Semestre</h3>
-                </div>
-                <div
-                    class="flex-1 h-2 sm:h-3 bg-gradient-to-r from-emerald-500 to-transparent ml-4 sm:ml-10 rounded-full shadow-lg">
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
-                @foreach ($segundo as $trabajo)
-                <div
-                    class="project-card glass-effect rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden border border-emerald-200/50 hover-glow">
-                    <div class="bg-gradient-to-r from-emerald-500 via-green-500 to-teal-500 h-2 sm:h-3"></div>
-
-                    <div class="p-4 sm:p-6 lg:p-10">
-                        <div class="mb-6 sm:mb-10">
-                            <div class="flex flex-wrap gap-2 sm:gap-4 mb-4 sm:mb-8">
-                                <span
-                                    class="bg-gradient-to-r from-green-700 to-green-800 text-white px-3 py-1 sm:px-5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
-                                    🏫 Grupo: {{ $trabajo['grupo'] }}
-                                </span>
-                                <span
-                                    class="bg-gradient-to-r from-emerald-500 to-green-500 text-white px-3 py-1 sm:px-5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
-                                    🎯 {{ $trabajo['especialidad'] }}
-                                </span>
-                            </div>
-
-                            <h3
-                                class="text-xl sm:text-2xl lg:text-3xl font-bold text-green-800 mb-4 sm:mb-6 text-shadow">
-                                {{ $trabajo['titulo'] }}</h3>
-
-                            <div
-                                class="space-y-2 sm:space-y-4 text-green-700 mb-4 sm:mb-8 glass-effect-dark p-3 sm:p-6 rounded-xl sm:rounded-2xl text-sm sm:text-base">
-                                <p><span class="font-bold text-green-800">📚 UAC:</span> {{ $trabajo['UAC'] }}</p>
-                                <p><span class="font-bold text-green-800">📈 Progresión:</span> {{
-                                    $trabajo['progresion'] }}</p>
-                                <p><span class="font-bold text-green-800">📅 Fecha:</span> {{
-                                    $trabajo['fecha_realizacion'] }}</p>
-                            </div>
-
-                            <p
-                                class="text-green-800 leading-relaxed mb-6 sm:mb-10 glass-effect p-3 sm:p-6 rounded-xl sm:rounded-2xl border border-green-200 text-sm sm:text-base">
-                                {{ $trabajo['descripcion'] }}
-                            </p>
-                        </div>
-
-                        @if (!empty($trabajo['imagenes']))
-                        <div class="mb-6 sm:mb-10">
-                            <h4 class="text-lg sm:text-xl font-semibold text-green-800 mb-3 sm:mb-6 flex items-center">
-                                🖼️ Galería del Proyecto
-                            </h4>
-                            <div class="grid grid-cols-2 gap-2 sm:gap-4">
-                                @foreach ($trabajo['imagenes'] as $index => $imagen)
-                                <div class="image-grid-item group cursor-pointer relative rounded-xl sm:rounded-2xl overflow-hidden shadow-lg"
-                                    onclick="openModal([@foreach($trabajo['imagenes'] as $img)'{{ $img['imagen'] }}'@if(!$loop->last),@endif @endforeach], {{ $index }})">
-                                    <img src="{{ $imagen['imagen'] }}" alt="Imagen del proyecto"
-                                        class="w-full h-24 sm:h-36 object-cover transition-all duration-300 group-hover:scale-110">
-                                    <div
-                                        class="absolute inset-0 bg-gradient-to-t from-emerald-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-between p-2 sm:p-4">
-                                        <span class="text-white text-xs sm:text-sm font-semibold">Ver imagen</span>
-                                        <svg class="w-4 h-4 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor"
-                                            viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                                        </svg>
-                                    </div>
-                                </div>
-                                @endforeach
-                            </div>
-                        </div>
-                        @endif
-
-                        @if (!empty($trabajo['enlaces']))
-                        <div class="space-y-2 sm:space-y-4">
-                            @foreach ($trabajo['enlaces'] as $enlace)
-                            <a href="{{ $enlace['enlace'] }}" target="_blank"
-                                class="flex items-center justify-between bg-gradient-to-r from-emerald-600 to-green-600 text-white px-4 sm:px-8 py-3 sm:py-5 rounded-xl sm:rounded-2xl hover:from-emerald-500 hover:to-green-500 transition-all duration-300 group shadow-lg hover:shadow-xl text-sm sm:text-base">
-                                <span class="font-semibold flex items-center truncate pr-2">
-                                    🔗 {{ $enlace['titulo_enlace'] }}
-                                </span>
-                                <svg class="w-4 h-4 sm:w-6 sm:h-6 group-hover:translate-x-2 transition-transform duration-300 flex-shrink-0"
-                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
-                                    </path>
-                                </svg>
-                            </a>
-                            @endforeach
-                        </div>
-                        @endif
+            <div class="mb-16 sm:mb-32">
+                <div class="flex items-center mb-10 sm:mb-20">
+                    <div
+                        class="semester-indicator text-white px-4 sm:px-8 lg:px-12 py-4 sm:py-6 lg:py-8 rounded-r-full shadow-2xl hover-glow transition-all duration-300 relative leaf-decoration">
+                        <h3 class="text-2xl sm:text-4xl lg:text-5xl font-bold">2do Semestre</h3>
+                    </div>
+                    <div
+                        class="flex-1 h-2 sm:h-3 bg-gradient-to-r from-emerald-500 to-transparent ml-4 sm:ml-10 rounded-full shadow-lg">
                     </div>
                 </div>
-                @endforeach
+
+                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
+                    @foreach ($segundo as $trabajo)
+                        <div
+                            class="project-card glass-effect rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden border border-emerald-200/50 hover-glow">
+                            <div class="bg-gradient-to-r from-emerald-500 via-green-500 to-teal-500 h-2 sm:h-3"></div>
+
+                            <div class="p-4 sm:p-6 lg:p-10">
+                                <div class="mb-6 sm:mb-10">
+                                    <div class="flex flex-wrap gap-2 sm:gap-4 mb-4 sm:mb-8">
+                                        <span
+                                            class="bg-gradient-to-r from-green-700 to-green-800 text-white px-3 py-1 sm:px-5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
+                                            🏫 Grupo: {{ $trabajo['grupo'] }}
+                                        </span>
+                                        <span
+                                            class="bg-gradient-to-r from-emerald-500 to-green-500 text-white px-3 py-1 sm:px-5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
+                                            🎯 {{ $trabajo['especialidad'] }}
+                                        </span>
+                                    </div>
+
+                                    <h3
+                                        class="text-xl sm:text-2xl lg:text-3xl font-bold text-green-800 mb-4 sm:mb-6 text-shadow">
+                                        {{ $trabajo['titulo'] }}</h3>
+
+                                    <div
+                                        class="space-y-2 sm:space-y-4 text-green-700 mb-4 sm:mb-8 glass-effect-dark p-3 sm:p-6 rounded-xl sm:rounded-2xl text-sm sm:text-base">
+                                        <p><span class="font-bold text-green-800">📚 UAC:</span> {{ $trabajo['UAC'] }}
+                                        </p>
+                                        <p><span class="font-bold text-green-800">📈 Progresión:</span>
+                                            {{ $trabajo['progresion'] }}</p>
+                                        <p><span class="font-bold text-green-800">📅 Fecha:</span>
+                                            {{ $trabajo['fecha_realizacion'] }}</p>
+                                    </div>
+
+                                    <p
+                                        class="text-green-800 leading-relaxed mb-6 sm:mb-10 glass-effect p-3 sm:p-6 rounded-xl sm:rounded-2xl border border-green-200 text-sm sm:text-base">
+                                        {{ $trabajo['descripcion'] }}
+                                    </p>
+                                </div>
+
+                                @if (!empty($trabajo['imagenes']))
+                                    <div class="mb-6 sm:mb-10">
+                                        <h4
+                                            class="text-lg sm:text-xl font-semibold text-green-800 mb-3 sm:mb-6 flex items-center">
+                                            🖼️ Galería del Proyecto
+                                        </h4>
+                                        <div class="grid grid-cols-2 gap-2 sm:gap-4">
+                                            @foreach ($trabajo['imagenes'] as $index => $imagen)
+                                                <div class="image-grid-item group cursor-pointer relative rounded-xl sm:rounded-2xl overflow-hidden shadow-lg"
+                                                    onclick="openModal([@foreach ($trabajo['imagenes'] as $img)'{{ asset('storage/' . $img['imagen']) }}'@if (!$loop->last),@endif @endforeach], {{ $index }})">
+                                                    <img src="{{ asset('storage/' . $imagen['imagen']) }}"
+                                                        alt="Imagen del proyecto"
+                                                        class="w-full h-24 sm:h-36 object-cover transition-all duration-300 group-hover:scale-110">
+                                                    <div
+                                                        class="absolute inset-0 bg-gradient-to-t from-emerald-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-between p-2 sm:p-4">
+                                                        <span class="text-white text-xs sm:text-sm font-semibold">Ver
+                                                            imagen</span>
+                                                        <svg class="w-4 h-4 sm:w-6 sm:h-6 text-white" fill="none"
+                                                            stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="2"
+                                                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                @endif
+
+                                @if (!empty($trabajo['enlaces']))
+                                    <div class="space-y-2 sm:space-y-4">
+                                        @foreach ($trabajo['enlaces'] as $enlace)
+                                            <a href="{{ $enlace['enlace'] }}" target="_blank"
+                                                class="flex items-center justify-between bg-gradient-to-r from-emerald-600 to-green-600 text-white px-4 sm:px-8 py-3 sm:py-5 rounded-xl sm:rounded-2xl hover:from-emerald-500 hover:to-green-500 transition-all duration-300 group shadow-lg hover:shadow-xl text-sm sm:text-base">
+                                                <span class="font-semibold flex items-center truncate pr-2">
+                                                    🔗 {{ $enlace['titulo_enlace'] }}
+                                                </span>
+                                                <svg class="w-4 h-4 sm:w-6 sm:h-6 group-hover:translate-x-2 transition-transform duration-300 flex-shrink-0"
+                                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                                    </path>
+                                                </svg>
+                                            </a>
+                                        @endforeach
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
             </div>
-        </div>
         @endif
 
         @if (!empty($tercero))
-        <div class="mb-16 sm:mb-32">
-            <div class="flex items-center mb-10 sm:mb-20">
-                <div
-                    class="semester-indicator text-white px-4 sm:px-8 lg:px-12 py-4 sm:py-6 lg:py-8 rounded-r-full shadow-2xl hover-glow transition-all duration-300 relative leaf-decoration">
-                    <h3 class="text-2xl sm:text-4xl lg:text-5xl font-bold">3er Semestre</h3>
-                </div>
-                <div
-                    class="flex-1 h-2 sm:h-3 bg-gradient-to-r from-teal-500 to-transparent ml-4 sm:ml-10 rounded-full shadow-lg">
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
-                @foreach ($tercero as $trabajo)
-                <div
-                    class="project-card glass-effect rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden border border-teal-200/50 hover-glow">
-                    <div class="bg-gradient-to-r from-teal-500 via-emerald-500 to-green-500 h-2 sm:h-3"></div>
-
-                    <div class="p-4 sm:p-6 lg:p-10">
-                        <div class="mb-6 sm:mb-10">
-                            <div class="flex flex-wrap gap-2 sm:gap-4 mb-4 sm:mb-8">
-                                <span
-                                    class="bg-gradient-to-r from-green-700 to-green-800 text-white px-3 py-1 sm:px-5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
-                                    🏫 Grupo: {{ $trabajo['grupo'] }}
-                                </span>
-                                <span
-                                    class="bg-gradient-to-r from-teal-500 to-emerald-500 text-white px-3 py-1 sm:px-5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
-                                    🎯 {{ $trabajo['especialidad'] }}
-                                </span>
-                            </div>
-
-                            <h3
-                                class="text-xl sm:text-2xl lg:text-3xl font-bold text-green-800 mb-4 sm:mb-6 text-shadow">
-                                {{ $trabajo['titulo'] }}</h3>
-
-                            <div
-                                class="space-y-2 sm:space-y-4 text-green-700 mb-4 sm:mb-8 glass-effect-dark p-3 sm:p-6 rounded-xl sm:rounded-2xl text-sm sm:text-base">
-                                <p><span class="font-bold text-green-800">📚 UAC:</span> {{ $trabajo['UAC'] }}</p>
-                                <p><span class="font-bold text-green-800">📈 Progresión:</span> {{
-                                    $trabajo['progresion'] }}</p>
-                                <p><span class="font-bold text-green-800">📅 Fecha:</span> {{
-                                    $trabajo['fecha_realizacion'] }}</p>
-                            </div>
-
-                            <p
-                                class="text-green-800 leading-relaxed mb-6 sm:mb-10 glass-effect p-3 sm:p-6 rounded-xl sm:rounded-2xl border border-green-200 text-sm sm:text-base">
-                                {{ $trabajo['descripcion'] }}
-                            </p>
-                        </div>
-
-                        @if (!empty($trabajo['imagenes']))
-                        <div class="mb-6 sm:mb-10">
-                            <h4 class="text-lg sm:text-xl font-semibold text-green-800 mb-3 sm:mb-6 flex items-center">
-                                🖼️ Galería del Proyecto
-                            </h4>
-                            <div class="grid grid-cols-2 gap-2 sm:gap-4">
-                                @foreach ($trabajo['imagenes'] as $index => $imagen)
-                                <div class="image-grid-item group cursor-pointer relative rounded-xl sm:rounded-2xl overflow-hidden shadow-lg"
-                                    onclick="openModal([@foreach($trabajo['imagenes'] as $img)'{{ $img['imagen'] }}'@if(!$loop->last),@endif @endforeach], {{ $index }})">
-                                    <img src="{{ $imagen['imagen'] }}" alt="Imagen del proyecto"
-                                        class="w-full h-24 sm:h-36 object-cover transition-all duration-300 group-hover:scale-110">
-                                    <div
-                                        class="absolute inset-0 bg-gradient-to-t from-teal-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-between p-2 sm:p-4">
-                                        <span class="text-white text-xs sm:text-sm font-semibold">Ver imagen</span>
-                                        <svg class="w-4 h-4 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor"
-                                            viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                                        </svg>
-                                    </div>
-                                </div>
-                                @endforeach
-                            </div>
-                        </div>
-                        @endif
-
-                        @if (!empty($trabajo['enlaces']))
-                        <div class="space-y-2 sm:space-y-4">
-                            @foreach ($trabajo['enlaces'] as $enlace)
-                            <a href="{{ $enlace['enlace'] }}" target="_blank"
-                                class="flex items-center justify-between bg-gradient-to-r from-teal-600 to-emerald-600 text-white px-4 sm:px-8 py-3 sm:py-5 rounded-xl sm:rounded-2xl hover:from-teal-500 hover:to-emerald-500 transition-all duration-300 group shadow-lg hover:shadow-xl text-sm sm:text-base">
-                                <span class="font-semibold flex items-center truncate pr-2">
-                                    🔗 {{ $enlace['titulo_enlace'] }}
-                                </span>
-                                <svg class="w-4 h-4 sm:w-6 sm:h-6 group-hover:translate-x-2 transition-transform duration-300 flex-shrink-0"
-                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
-                                    </path>
-                                </svg>
-                            </a>
-                            @endforeach
-                        </div>
-                        @endif
+            <div class="mb-16 sm:mb-32">
+                <div class="flex items-center mb-10 sm:mb-20">
+                    <div
+                        class="semester-indicator text-white px-4 sm:px-8 lg:px-12 py-4 sm:py-6 lg:py-8 rounded-r-full shadow-2xl hover-glow transition-all duration-300 relative leaf-decoration">
+                        <h3 class="text-2xl sm:text-4xl lg:text-5xl font-bold">3er Semestre</h3>
+                    </div>
+                    <div
+                        class="flex-1 h-2 sm:h-3 bg-gradient-to-r from-teal-500 to-transparent ml-4 sm:ml-10 rounded-full shadow-lg">
                     </div>
                 </div>
-                @endforeach
+
+                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
+                    @foreach ($tercero as $trabajo)
+                        <div
+                            class="project-card glass-effect rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden border border-teal-200/50 hover-glow">
+                            <div class="bg-gradient-to-r from-teal-500 via-emerald-500 to-green-500 h-2 sm:h-3"></div>
+
+                            <div class="p-4 sm:p-6 lg:p-10">
+                                <div class="mb-6 sm:mb-10">
+                                    <div class="flex flex-wrap gap-2 sm:gap-4 mb-4 sm:mb-8">
+                                        <span
+                                            class="bg-gradient-to-r from-green-700 to-green-800 text-white px-3 py-1 sm:px-5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
+                                            🏫 Grupo: {{ $trabajo['grupo'] }}
+                                        </span>
+                                        <span
+                                            class="bg-gradient-to-r from-teal-500 to-emerald-500 text-white px-3 py-1 sm:px-5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
+                                            🎯 {{ $trabajo['especialidad'] }}
+                                        </span>
+                                    </div>
+
+                                    <h3
+                                        class="text-xl sm:text-2xl lg:text-3xl font-bold text-green-800 mb-4 sm:mb-6 text-shadow">
+                                        {{ $trabajo['titulo'] }}</h3>
+
+                                    <div
+                                        class="space-y-2 sm:space-y-4 text-green-700 mb-4 sm:mb-8 glass-effect-dark p-3 sm:p-6 rounded-xl sm:rounded-2xl text-sm sm:text-base">
+                                        <p><span class="font-bold text-green-800">📚 UAC:</span> {{ $trabajo['UAC'] }}
+                                        </p>
+                                        <p><span class="font-bold text-green-800">📈 Progresión:</span>
+                                            {{ $trabajo['progresion'] }}</p>
+                                        <p><span class="font-bold text-green-800">📅 Fecha:</span>
+                                            {{ $trabajo['fecha_realizacion'] }}</p>
+                                    </div>
+
+                                    <p
+                                        class="text-green-800 leading-relaxed mb-6 sm:mb-10 glass-effect p-3 sm:p-6 rounded-xl sm:rounded-2xl border border-green-200 text-sm sm:text-base">
+                                        {{ $trabajo['descripcion'] }}
+                                    </p>
+                                </div>
+
+                                @if (!empty($trabajo['imagenes']))
+                                    <div class="mb-6 sm:mb-10">
+                                        <h4
+                                            class="text-lg sm:text-xl font-semibold text-green-800 mb-3 sm:mb-6 flex items-center">
+                                            🖼️ Galería del Proyecto
+                                        </h4>
+                                        <div class="grid grid-cols-2 gap-2 sm:gap-4">
+                                            @foreach ($trabajo['imagenes'] as $index => $imagen)
+                                                <div class="image-grid-item group cursor-pointer relative rounded-xl sm:rounded-2xl overflow-hidden shadow-lg"
+                                                    onclick="openModal([@foreach ($trabajo['imagenes'] as $img)'{{ asset('storage/' . $img['imagen']) }}'@if (!$loop->last),@endif @endforeach], {{ $index }})">
+                                                    <img src="{{ asset('storage/' . $imagen['imagen']) }}"
+                                                        alt="Imagen del proyecto"
+                                                        class="w-full h-24 sm:h-36 object-cover transition-all duration-300 group-hover:scale-110">
+                                                    <div
+                                                        class="absolute inset-0 bg-gradient-to-t from-teal-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-between p-2 sm:p-4">
+                                                        <span class="text-white text-xs sm:text-sm font-semibold">Ver
+                                                            imagen</span>
+                                                        <svg class="w-4 h-4 sm:w-6 sm:h-6 text-white" fill="none"
+                                                            stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="2"
+                                                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                @endif
+
+                                @if (!empty($trabajo['enlaces']))
+                                    <div class="space-y-2 sm:space-y-4">
+                                        @foreach ($trabajo['enlaces'] as $enlace)
+                                            <a href="{{ $enlace['enlace'] }}" target="_blank"
+                                                class="flex items-center justify-between bg-gradient-to-r from-teal-600 to-emerald-600 text-white px-4 sm:px-8 py-3 sm:py-5 rounded-xl sm:rounded-2xl hover:from-teal-500 hover:to-emerald-500 transition-all duration-300 group shadow-lg hover:shadow-xl text-sm sm:text-base">
+                                                <span class="font-semibold flex items-center truncate pr-2">
+                                                    🔗 {{ $enlace['titulo_enlace'] }}
+                                                </span>
+                                                <svg class="w-4 h-4 sm:w-6 sm:h-6 group-hover:translate-x-2 transition-transform duration-300 flex-shrink-0"
+                                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                                    </path>
+                                                </svg>
+                                            </a>
+                                        @endforeach
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
             </div>
-        </div>
         @endif
 
         @if (!empty($cuarto))
-        <div class="mb-16 sm:mb-32">
-            <div class="flex items-center mb-10 sm:mb-20">
-                <div
-                    class="semester-indicator text-white px-4 sm:px-8 lg:px-12 py-4 sm:py-6 lg:py-8 rounded-r-full shadow-2xl hover-glow transition-all duration-300 relative leaf-decoration">
-                    <h3 class="text-2xl sm:text-4xl lg:text-5xl font-bold">4to Semestre</h3>
-                </div>
-                <div
-                    class="flex-1 h-2 sm:h-3 bg-gradient-to-r from-cyan-500 to-transparent ml-4 sm:ml-10 rounded-full shadow-lg">
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
-                @foreach ($cuarto as $trabajo)
-                <div
-                    class="project-card glass-effect rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden border border-cyan-200/50 hover-glow">
-                    <div class="bg-gradient-to-r from-cyan-500 via-teal-500 to-emerald-500 h-2 sm:h-3"></div>
-
-                    <div class="p-4 sm:p-6 lg:p-10">
-                        <div class="mb-6 sm:mb-10">
-                            <div class="flex flex-wrap gap-2 sm:gap-4 mb-4 sm:mb-8">
-                                <span
-                                    class="bg-gradient-to-r from-green-700 to-green-800 text-white px-3 py-1 sm:px-5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
-                                    🏫 Grupo: {{ $trabajo['grupo'] }}
-                                </span>
-                                <span
-                                    class="bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-3 py-1 sm:px-5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
-                                    🎯 {{ $trabajo['especialidad'] }}
-                                </span>
-                            </div>
-
-                            <h3
-                                class="text-xl sm:text-2xl lg:text-3xl font-bold text-green-800 mb-4 sm:mb-6 text-shadow">
-                                {{ $trabajo['titulo'] }}</h3>
-
-                            <div
-                                class="space-y-2 sm:space-y-4 text-green-700 mb-4 sm:mb-8 glass-effect-dark p-3 sm:p-6 rounded-xl sm:rounded-2xl text-sm sm:text-base">
-                                <p><span class="font-bold text-green-800">📚 UAC:</span> {{ $trabajo['UAC'] }}</p>
-                                <p><span class="font-bold text-green-800">📈 Progresión:</span> {{
-                                    $trabajo['progresion'] }}</p>
-                                <p><span class="font-bold text-green-800">📅 Fecha:</span> {{
-                                    $trabajo['fecha_realizacion'] }}</p>
-                            </div>
-
-                            <p
-                                class="text-green-800 leading-relaxed mb-6 sm:mb-10 glass-effect p-3 sm:p-6 rounded-xl sm:rounded-2xl border border-green-200 text-sm sm:text-base">
-                                {{ $trabajo['descripcion'] }}
-                            </p>
-                        </div>
-
-                        @if (!empty($trabajo['imagenes']))
-                        <div class="mb-6 sm:mb-10">
-                            <h4 class="text-lg sm:text-xl font-semibold text-green-800 mb-3 sm:mb-6 flex items-center">
-                                🖼️ Galería del Proyecto
-                            </h4>
-                            <div class="grid grid-cols-2 gap-2 sm:gap-4">
-                                @foreach ($trabajo['imagenes'] as $index => $imagen)
-                                <div class="image-grid-item group cursor-pointer relative rounded-xl sm:rounded-2xl overflow-hidden shadow-lg"
-                                    onclick="openModal([@foreach($trabajo['imagenes'] as $img)'{{ $img['imagen'] }}'@if(!$loop->last),@endif @endforeach], {{ $index }})">
-                                    <img src="{{ $imagen['imagen'] }}" alt="Imagen del proyecto"
-                                        class="w-full h-24 sm:h-36 object-cover transition-all duration-300 group-hover:scale-110">
-                                    <div
-                                        class="absolute inset-0 bg-gradient-to-t from-cyan-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-between p-2 sm:p-4">
-                                        <span class="text-white text-xs sm:text-sm font-semibold">Ver imagen</span>
-                                        <svg class="w-4 h-4 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor"
-                                            viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                                        </svg>
-                                    </div>
-                                </div>
-                                @endforeach
-                            </div>
-                        </div>
-                        @endif
-
-                        @if (!empty($trabajo['enlaces']))
-                        <div class="space-y-2 sm:space-y-4">
-                            @foreach ($trabajo['enlaces'] as $enlace)
-                            <a href="{{ $enlace['enlace'] }}" target="_blank"
-                                class="flex items-center justify-between bg-gradient-to-r from-cyan-600 to-teal-600 text-white px-4 sm:px-8 py-3 sm:py-5 rounded-xl sm:rounded-2xl hover:from-cyan-500 hover:to-teal-500 transition-all duration-300 group shadow-lg hover:shadow-xl text-sm sm:text-base">
-                                <span class="font-semibold flex items-center truncate pr-2">
-                                    🔗 {{ $enlace['titulo_enlace'] }}
-                                </span>
-                                <svg class="w-4 h-4 sm:w-6 sm:h-6 group-hover:translate-x-2 transition-transform duration-300 flex-shrink-0"
-                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
-                                    </path>
-                                </svg>
-                            </a>
-                            @endforeach
-                        </div>
-                        @endif
+            <div class="mb-16 sm:mb-32">
+                <div class="flex items-center mb-10 sm:mb-20">
+                    <div
+                        class="semester-indicator text-white px-4 sm:px-8 lg:px-12 py-4 sm:py-6 lg:py-8 rounded-r-full shadow-2xl hover-glow transition-all duration-300 relative leaf-decoration">
+                        <h3 class="text-2xl sm:text-4xl lg:text-5xl font-bold">4to Semestre</h3>
+                    </div>
+                    <div
+                        class="flex-1 h-2 sm:h-3 bg-gradient-to-r from-cyan-500 to-transparent ml-4 sm:ml-10 rounded-full shadow-lg">
                     </div>
                 </div>
-                @endforeach
+
+                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
+                    @foreach ($cuarto as $trabajo)
+                        <div
+                            class="project-card glass-effect rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden border border-cyan-200/50 hover-glow">
+                            <div class="bg-gradient-to-r from-cyan-500 via-teal-500 to-emerald-500 h-2 sm:h-3"></div>
+
+                            <div class="p-4 sm:p-6 lg:p-10">
+                                <div class="mb-6 sm:mb-10">
+                                    <div class="flex flex-wrap gap-2 sm:gap-4 mb-4 sm:mb-8">
+                                        <span
+                                            class="bg-gradient-to-r from-green-700 to-green-800 text-white px-3 py-1 sm:px-5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
+                                            🏫 Grupo: {{ $trabajo['grupo'] }}
+                                        </span>
+                                        <span
+                                            class="bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-3 py-1 sm:px-5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
+                                            🎯 {{ $trabajo['especialidad'] }}
+                                        </span>
+                                    </div>
+
+                                    <h3
+                                        class="text-xl sm:text-2xl lg:text-3xl font-bold text-green-800 mb-4 sm:mb-6 text-shadow">
+                                        {{ $trabajo['titulo'] }}</h3>
+
+                                    <div
+                                        class="space-y-2 sm:space-y-4 text-green-700 mb-4 sm:mb-8 glass-effect-dark p-3 sm:p-6 rounded-xl sm:rounded-2xl text-sm sm:text-base">
+                                        <p><span class="font-bold text-green-800">📚 UAC:</span> {{ $trabajo['UAC'] }}
+                                        </p>
+                                        <p><span class="font-bold text-green-800">📈 Progresión:</span>
+                                            {{ $trabajo['progresion'] }}</p>
+                                        <p><span class="font-bold text-green-800">📅 Fecha:</span>
+                                            {{ $trabajo['fecha_realizacion'] }}</p>
+                                    </div>
+
+                                    <p
+                                        class="text-green-800 leading-relaxed mb-6 sm:mb-10 glass-effect p-3 sm:p-6 rounded-xl sm:rounded-2xl border border-green-200 text-sm sm:text-base">
+                                        {{ $trabajo['descripcion'] }}
+                                    </p>
+                                </div>
+
+                                @if (!empty($trabajo['imagenes']))
+                                    <div class="mb-6 sm:mb-10">
+                                        <h4
+                                            class="text-lg sm:text-xl font-semibold text-green-800 mb-3 sm:mb-6 flex items-center">
+                                            🖼️ Galería del Proyecto
+                                        </h4>
+                                        <div class="grid grid-cols-2 gap-2 sm:gap-4">
+                                            @foreach ($trabajo['imagenes'] as $index => $imagen)
+                                                <div class="image-grid-item group cursor-pointer relative rounded-xl sm:rounded-2xl overflow-hidden shadow-lg"
+                                                    onclick="openModal([@foreach ($trabajo['imagenes'] as $img)'{{ asset('storage/' . $img['imagen']) }}'@if (!$loop->last),@endif @endforeach], {{ $index }})">
+                                                    <img src="{{ asset('storage/' . $imagen['imagen']) }}"
+                                                        alt="Imagen del proyecto"
+                                                        class="w-full h-24 sm:h-36 object-cover transition-all duration-300 group-hover:scale-110">
+                                                    <div
+                                                        class="absolute inset-0 bg-gradient-to-t from-cyan-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-between p-2 sm:p-4">
+                                                        <span class="text-white text-xs sm:text-sm font-semibold">Ver
+                                                            imagen</span>
+                                                        <svg class="w-4 h-4 sm:w-6 sm:h-6 text-white" fill="none"
+                                                            stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="2"
+                                                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                @endif
+
+                                @if (!empty($trabajo['enlaces']))
+                                    <div class="space-y-2 sm:space-y-4">
+                                        @foreach ($trabajo['enlaces'] as $enlace)
+                                            <a href="{{ $enlace['enlace'] }}" target="_blank"
+                                                class="flex items-center justify-between bg-gradient-to-r from-cyan-600 to-teal-600 text-white px-4 sm:px-8 py-3 sm:py-5 rounded-xl sm:rounded-2xl hover:from-cyan-500 hover:to-teal-500 transition-all duration-300 group shadow-lg hover:shadow-xl text-sm sm:text-base">
+                                                <span class="font-semibold flex items-center truncate pr-2">
+                                                    🔗 {{ $enlace['titulo_enlace'] }}
+                                                </span>
+                                                <svg class="w-4 h-4 sm:w-6 sm:h-6 group-hover:translate-x-2 transition-transform duration-300 flex-shrink-0"
+                                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                                    </path>
+                                                </svg>
+                                            </a>
+                                        @endforeach
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
             </div>
-        </div>
         @endif
 
         @if (!empty($quinto))
-        <div class="mb-16 sm:mb-32">
-            <div class="flex items-center mb-10 sm:mb-20">
-                <div
-                    class="semester-indicator text-white px-4 sm:px-8 lg:px-12 py-4 sm:py-6 lg:py-8 rounded-r-full shadow-2xl hover-glow transition-all duration-300 relative leaf-decoration">
-                    <h3 class="text-2xl sm:text-4xl lg:text-5xl font-bold">5to Semestre</h3>
-                </div>
-                <div
-                    class="flex-1 h-2 sm:h-3 bg-gradient-to-r from-blue-500 to-transparent ml-4 sm:ml-10 rounded-full shadow-lg">
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
-                @foreach ($quinto as $trabajo)
-                <div
-                    class="project-card glass-effect rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden border border-blue-200/50 hover-glow">
-                    <div class="bg-gradient-to-r from-blue-500 via-cyan-500 to-teal-500 h-2 sm:h-3"></div>
-
-                    <div class="p-4 sm:p-6 lg:p-10">
-                        <div class="mb-6 sm:mb-10">
-                            <div class="flex flex-wrap gap-2 sm:gap-4 mb-4 sm:mb-8">
-                                <span
-                                    class="bg-gradient-to-r from-green-700 to-green-800 text-white px-3 py-1 sm:px-5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
-                                    🏫 Grupo: {{ $trabajo['grupo'] }}
-                                </span>
-                                <span
-                                    class="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-3 py-1 sm:px-5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
-                                    🎯 {{ $trabajo['especialidad'] }}
-                                </span>
-                            </div>
-
-                            <h3
-                                class="text-xl sm:text-2xl lg:text-3xl font-bold text-green-800 mb-4 sm:mb-6 text-shadow">
-                                {{ $trabajo['titulo'] }}</h3>
-
-                            <div
-                                class="space-y-2 sm:space-y-4 text-green-700 mb-4 sm:mb-8 glass-effect-dark p-3 sm:p-6 rounded-xl sm:rounded-2xl text-sm sm:text-base">
-                                <p><span class="font-bold text-green-800">📚 UAC:</span> {{ $trabajo['UAC'] }}</p>
-                                <p><span class="font-bold text-green-800">📈 Progresión:</span> {{
-                                    $trabajo['progresion'] }}</p>
-                                <p><span class="font-bold text-green-800">📅 Fecha:</span> {{
-                                    $trabajo['fecha_realizacion'] }}</p>
-                            </div>
-
-                            <p
-                                class="text-green-800 leading-relaxed mb-6 sm:mb-10 glass-effect p-3 sm:p-6 rounded-xl sm:rounded-2xl border border-green-200 text-sm sm:text-base">
-                                {{ $trabajo['descripcion'] }}
-                            </p>
-                        </div>
-
-                        @if (!empty($trabajo['imagenes']))
-                        <div class="mb-6 sm:mb-10">
-                            <h4 class="text-lg sm:text-xl font-semibold text-green-800 mb-3 sm:mb-6 flex items-center">
-                                🖼️ Galería del Proyecto
-                            </h4>
-                            <div class="grid grid-cols-2 gap-2 sm:gap-4">
-                                @foreach ($trabajo['imagenes'] as $index => $imagen)
-                                <div class="image-grid-item group cursor-pointer relative rounded-xl sm:rounded-2xl overflow-hidden shadow-lg"
-                                    onclick="openModal([@foreach($trabajo['imagenes'] as $img)'{{ $img['imagen'] }}'@if(!$loop->last),@endif @endforeach], {{ $index }})">
-                                    <img src="{{ $imagen['imagen'] }}" alt="Imagen del proyecto"
-                                        class="w-full h-24 sm:h-36 object-cover transition-all duration-300 group-hover:scale-110">
-                                    <div
-                                        class="absolute inset-0 bg-gradient-to-t from-blue-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-between p-2 sm:p-4">
-                                        <span class="text-white text-xs sm:text-sm font-semibold">Ver imagen</span>
-                                        <svg class="w-4 h-4 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor"
-                                            viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                                        </svg>
-                                    </div>
-                                </div>
-                                @endforeach
-                            </div>
-                        </div>
-                        @endif
-
-                        @if (!empty($trabajo['enlaces']))
-                        <div class="space-y-2 sm:space-y-4">
-                            @foreach ($trabajo['enlaces'] as $enlace)
-                            <a href="{{ $enlace['enlace'] }}" target="_blank"
-                                class="flex items-center justify-between bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-4 sm:px-8 py-3 sm:py-5 rounded-xl sm:rounded-2xl hover:from-blue-500 hover:to-cyan-500 transition-all duration-300 group shadow-lg hover:shadow-xl text-sm sm:text-base">
-                                <span class="font-semibold flex items-center truncate pr-2">
-                                    🔗 {{ $enlace['titulo_enlace'] }}
-                                </span>
-                                <svg class="w-4 h-4 sm:w-6 sm:h-6 group-hover:translate-x-2 transition-transform duration-300 flex-shrink-0"
-                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
-                                    </path>
-                                </svg>
-                            </a>
-                            @endforeach
-                        </div>
-                        @endif
+            <div class="mb-16 sm:mb-32">
+                <div class="flex items-center mb-10 sm:mb-20">
+                    <div
+                        class="semester-indicator text-white px-4 sm:px-8 lg:px-12 py-4 sm:py-6 lg:py-8 rounded-r-full shadow-2xl hover-glow transition-all duration-300 relative leaf-decoration">
+                        <h3 class="text-2xl sm:text-4xl lg:text-5xl font-bold">5to Semestre</h3>
+                    </div>
+                    <div
+                        class="flex-1 h-2 sm:h-3 bg-gradient-to-r from-blue-500 to-transparent ml-4 sm:ml-10 rounded-full shadow-lg">
                     </div>
                 </div>
-                @endforeach
+
+                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
+                    @foreach ($quinto as $trabajo)
+                        <div
+                            class="project-card glass-effect rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden border border-blue-200/50 hover-glow">
+                            <div class="bg-gradient-to-r from-blue-500 via-cyan-500 to-teal-500 h-2 sm:h-3"></div>
+
+                            <div class="p-4 sm:p-6 lg:p-10">
+                                <div class="mb-6 sm:mb-10">
+                                    <div class="flex flex-wrap gap-2 sm:gap-4 mb-4 sm:mb-8">
+                                        <span
+                                            class="bg-gradient-to-r from-green-700 to-green-800 text-white px-3 py-1 sm:px-5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
+                                            🏫 Grupo: {{ $trabajo['grupo'] }}
+                                        </span>
+                                        <span
+                                            class="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-3 py-1 sm:px-5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
+                                            🎯 {{ $trabajo['especialidad'] }}
+                                        </span>
+                                    </div>
+
+                                    <h3
+                                        class="text-xl sm:text-2xl lg:text-3xl font-bold text-green-800 mb-4 sm:mb-6 text-shadow">
+                                        {{ $trabajo['titulo'] }}</h3>
+
+                                    <div
+                                        class="space-y-2 sm:space-y-4 text-green-700 mb-4 sm:mb-8 glass-effect-dark p-3 sm:p-6 rounded-xl sm:rounded-2xl text-sm sm:text-base">
+                                        <p><span class="font-bold text-green-800">📚 UAC:</span> {{ $trabajo['UAC'] }}
+                                        </p>
+                                        <p><span class="font-bold text-green-800">📈 Progresión:</span>
+                                            {{ $trabajo['progresion'] }}</p>
+                                        <p><span class="font-bold text-green-800">📅 Fecha:</span>
+                                            {{ $trabajo['fecha_realizacion'] }}</p>
+                                    </div>
+
+                                    <p
+                                        class="text-green-800 leading-relaxed mb-6 sm:mb-10 glass-effect p-3 sm:p-6 rounded-xl sm:rounded-2xl border border-green-200 text-sm sm:text-base">
+                                        {{ $trabajo['descripcion'] }}
+                                    </p>
+                                </div>
+
+                                @if (!empty($trabajo['imagenes']))
+                                    <div class="mb-6 sm:mb-10">
+                                        <h4
+                                            class="text-lg sm:text-xl font-semibold text-green-800 mb-3 sm:mb-6 flex items-center">
+                                            🖼️ Galería del Proyecto
+                                        </h4>
+                                        <div class="grid grid-cols-2 gap-2 sm:gap-4">
+                                            @foreach ($trabajo['imagenes'] as $index => $imagen)
+                                                <div class="image-grid-item group cursor-pointer relative rounded-xl sm:rounded-2xl overflow-hidden shadow-lg"
+                                                    onclick="openModal([@foreach ($trabajo['imagenes'] as $img)'{{ asset('storage/' . $img['imagen']) }}'@if (!$loop->last),@endif @endforeach], {{ $index }})">
+                                                    <img src="{{ asset('storage/' . $imagen['imagen']) }}"
+                                                        alt="Imagen del proyecto"
+                                                        class="w-full h-24 sm:h-36 object-cover transition-all duration-300 group-hover:scale-110">
+                                                    <div
+                                                        class="absolute inset-0 bg-gradient-to-t from-blue-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-between p-2 sm:p-4">
+                                                        <span class="text-white text-xs sm:text-sm font-semibold">Ver
+                                                            imagen</span>
+                                                        <svg class="w-4 h-4 sm:w-6 sm:h-6 text-white" fill="none"
+                                                            stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="2"
+                                                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                @endif
+
+                                @if (!empty($trabajo['enlaces']))
+                                    <div class="space-y-2 sm:space-y-4">
+                                        @foreach ($trabajo['enlaces'] as $enlace)
+                                            <a href="{{ $enlace['enlace'] }}" target="_blank"
+                                                class="flex items-center justify-between bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-4 sm:px-8 py-3 sm:py-5 rounded-xl sm:rounded-2xl hover:from-blue-500 hover:to-cyan-500 transition-all duration-300 group shadow-lg hover:shadow-xl text-sm sm:text-base">
+                                                <span class="font-semibold flex items-center truncate pr-2">
+                                                    🔗 {{ $enlace['titulo_enlace'] }}
+                                                </span>
+                                                <svg class="w-4 h-4 sm:w-6 sm:h-6 group-hover:translate-x-2 transition-transform duration-300 flex-shrink-0"
+                                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                                    </path>
+                                                </svg>
+                                            </a>
+                                        @endforeach
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
             </div>
-        </div>
         @endif
 
         @if (!empty($sexto))
-        <div class="mb-16 sm:mb-32">
-            <div class="flex items-center mb-10 sm:mb-20">
-                <div
-                    class="semester-indicator text-white px-4 sm:px-8 lg:px-12 py-4 sm:py-6 lg:py-8 rounded-r-full shadow-2xl hover-glow transition-all duration-300 relative leaf-decoration">
-                    <h3 class="text-2xl sm:text-4xl lg:text-5xl font-bold">6to Semestre</h3>
-                </div>
-                <div
-                    class="flex-1 h-2 sm:h-3 bg-gradient-to-r from-purple-500 to-transparent ml-4 sm:ml-10 rounded-full shadow-lg">
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
-                @foreach ($sexto as $trabajo)
-                <div
-                    class="project-card glass-effect rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden border border-purple-200/50 hover-glow">
-                    <div class="bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-500 h-2 sm:h-3"></div>
-
-                    <div class="p-4 sm:p-6 lg:p-10">
-                        <div class="mb-6 sm:mb-10">
-                            <div class="flex flex-wrap gap-2 sm:gap-4 mb-4 sm:mb-8">
-                                <span
-                                    class="bg-gradient-to-r from-green-700 to-green-800 text-white px-3 py-1 sm:px-5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
-                                    🏫 Grupo: {{ $trabajo['grupo'] }}
-                                </span>
-                                <span
-                                    class="bg-gradient-to-r from-purple-500 to-blue-500 text-white px-3 py-1 sm:px-5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
-                                    🎯 {{ $trabajo['especialidad'] }}
-                                </span>
-                            </div>
-
-                            <h3
-                                class="text-xl sm:text-2xl lg:text-3xl font-bold text-green-800 mb-4 sm:mb-6 text-shadow">
-                                {{ $trabajo['titulo'] }}</h3>
-
-                            <div
-                                class="space-y-2 sm:space-y-4 text-green-700 mb-4 sm:mb-8 glass-effect-dark p-3 sm:p-6 rounded-xl sm:rounded-2xl text-sm sm:text-base">
-                                <p><span class="font-bold text-green-800">📚 UAC:</span> {{ $trabajo['UAC'] }}</p>
-                                <p><span class="font-bold text-green-800">📈 Progresión:</span> {{
-                                    $trabajo['progresion'] }}</p>
-                                <p><span class="font-bold text-green-800">📅 Fecha:</span> {{
-                                    $trabajo['fecha_realizacion'] }}</p>
-                            </div>
-
-                            <p
-                                class="text-green-800 leading-relaxed mb-6 sm:mb-10 glass-effect p-3 sm:p-6 rounded-xl sm:rounded-2xl border border-green-200 text-sm sm:text-base">
-                                {{ $trabajo['descripcion'] }}
-                            </p>
-                        </div>
-
-                        @if (!empty($trabajo['imagenes']))
-                        <div class="mb-6 sm:mb-10">
-                            <h4 class="text-lg sm:text-xl font-semibold text-green-800 mb-3 sm:mb-6 flex items-center">
-                                🖼️ Galería del Proyecto
-                            </h4>
-                            <div class="grid grid-cols-2 gap-2 sm:gap-4">
-                                @foreach ($trabajo['imagenes'] as $index => $imagen)
-                                <div class="image-grid-item group cursor-pointer relative rounded-xl sm:rounded-2xl overflow-hidden shadow-lg"
-                                    onclick="openModal([@foreach($trabajo['imagenes'] as $img)'{{ $img['imagen'] }}'@if(!$loop->last),@endif @endforeach], {{ $index }})">
-                                    <img src="{{ $imagen['imagen'] }}" alt="Imagen del proyecto"
-                                        class="w-full h-24 sm:h-36 object-cover transition-all duration-300 group-hover:scale-110">
-                                    <div
-                                        class="absolute inset-0 bg-gradient-to-t from-purple-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-between p-2 sm:p-4">
-                                        <span class="text-white text-xs sm:text-sm font-semibold">Ver imagen</span>
-                                        <svg class="w-4 h-4 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor"
-                                            viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                                        </svg>
-                                    </div>
-                                </div>
-                                @endforeach
-                            </div>
-                        </div>
-                        @endif
-
-                        @if (!empty($trabajo['enlaces']))
-                        <div class="space-y-2 sm:space-y-4">
-                            @foreach ($trabajo['enlaces'] as $enlace)
-                            <a href="{{ $enlace['enlace'] }}" target="_blank"
-                                class="flex items-center justify-between bg-gradient-to-r from-purple-600 to-blue-600 text-white px-4 sm:px-8 py-3 sm:py-5 rounded-xl sm:rounded-2xl hover:from-purple-500 hover:to-blue-500 transition-all duration-300 group shadow-lg hover:shadow-xl text-sm sm:text-base">
-                                <span class="font-semibold flex items-center truncate pr-2">
-                                    🔗 {{ $enlace['titulo_enlace'] }}
-                                </span>
-                                <svg class="w-4 h-4 sm:w-6 sm:h-6 group-hover:translate-x-2 transition-transform duration-300 flex-shrink-0"
-                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
-                                    </path>
-                                </svg>
-                            </a>
-                            @endforeach
-                        </div>
-                        @endif
+            <div class="mb-16 sm:mb-32">
+                <div class="flex items-center mb-10 sm:mb-20">
+                    <div
+                        class="semester-indicator text-white px-4 sm:px-8 lg:px-12 py-4 sm:py-6 lg:py-8 rounded-r-full shadow-2xl hover-glow transition-all duration-300 relative leaf-decoration">
+                        <h3 class="text-2xl sm:text-4xl lg:text-5xl font-bold">6to Semestre</h3>
+                    </div>
+                    <div
+                        class="flex-1 h-2 sm:h-3 bg-gradient-to-r from-purple-500 to-transparent ml-4 sm:ml-10 rounded-full shadow-lg">
                     </div>
                 </div>
-                @endforeach
+
+                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
+                    @foreach ($sexto as $trabajo)
+                        <div
+                            class="project-card glass-effect rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden border border-purple-200/50 hover-glow">
+                            <div class="bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-500 h-2 sm:h-3"></div>
+
+                            <div class="p-4 sm:p-6 lg:p-10">
+                                <div class="mb-6 sm:mb-10">
+                                    <div class="flex flex-wrap gap-2 sm:gap-4 mb-4 sm:mb-8">
+                                        <span
+                                            class="bg-gradient-to-r from-green-700 to-green-800 text-white px-3 py-1 sm:px-5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
+                                            🏫 Grupo: {{ $trabajo['grupo'] }}
+                                        </span>
+                                        <span
+                                            class="bg-gradient-to-r from-purple-500 to-blue-500 text-white px-3 py-1 sm:px-5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
+                                            🎯 {{ $trabajo['especialidad'] }}
+                                        </span>
+                                    </div>
+
+                                    <h3
+                                        class="text-xl sm:text-2xl lg:text-3xl font-bold text-green-800 mb-4 sm:mb-6 text-shadow">
+                                        {{ $trabajo['titulo'] }}</h3>
+
+                                    <div
+                                        class="space-y-2 sm:space-y-4 text-green-700 mb-4 sm:mb-8 glass-effect-dark p-3 sm:p-6 rounded-xl sm:rounded-2xl text-sm sm:text-base">
+                                        <p><span class="font-bold text-green-800">📚 UAC:</span> {{ $trabajo['UAC'] }}
+                                        </p>
+                                        <p><span class="font-bold text-green-800">📈 Progresión:</span>
+                                            {{ $trabajo['progresion'] }}</p>
+                                        <p><span class="font-bold text-green-800">📅 Fecha:</span>
+                                            {{ $trabajo['fecha_realizacion'] }}</p>
+                                    </div>
+
+                                    <p
+                                        class="text-green-800 leading-relaxed mb-6 sm:mb-10 glass-effect p-3 sm:p-6 rounded-xl sm:rounded-2xl border border-green-200 text-sm sm:text-base">
+                                        {{ $trabajo['descripcion'] }}
+                                    </p>
+                                </div>
+
+                                @if (!empty($trabajo['imagenes']))
+                                    <div class="mb-6 sm:mb-10">
+                                        <h4
+                                            class="text-lg sm:text-xl font-semibold text-green-800 mb-3 sm:mb-6 flex items-center">
+                                            🖼️ Galería del Proyecto
+                                        </h4>
+                                        <div class="grid grid-cols-2 gap-2 sm:gap-4">
+                                            @foreach ($trabajo['imagenes'] as $index => $imagen)
+                                                <div class="image-grid-item group cursor-pointer relative rounded-xl sm:rounded-2xl overflow-hidden shadow-lg"
+                                                    onclick="openModal([@foreach ($trabajo['imagenes'] as $img)'{{ asset('storage/' . $img['imagen']) }}'@if (!$loop->last),@endif @endforeach], {{ $index }})">
+                                                    <img src="{{ asset('storage/' . $imagen['imagen']) }}"
+                                                        alt="Imagen del proyecto"
+                                                        class="w-full h-24 sm:h-36 object-cover transition-all duration-300 group-hover:scale-110">
+                                                    <div
+                                                        class="absolute inset-0 bg-gradient-to-t from-purple-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-between p-2 sm:p-4">
+                                                        <span class="text-white text-xs sm:text-sm font-semibold">Ver
+                                                            imagen</span>
+                                                        <svg class="w-4 h-4 sm:w-6 sm:h-6 text-white" fill="none"
+                                                            stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="2"
+                                                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                @endif
+
+                                @if (!empty($trabajo['enlaces']))
+                                    <div class="space-y-2 sm:space-y-4">
+                                        @foreach ($trabajo['enlaces'] as $enlace)
+                                            <a href="{{ $enlace['enlace'] }}" target="_blank"
+                                                class="flex items-center justify-between bg-gradient-to-r from-purple-600 to-blue-600 text-white px-4 sm:px-8 py-3 sm:py-5 rounded-xl sm:rounded-2xl hover:from-purple-500 hover:to-blue-500 transition-all duration-300 group shadow-lg hover:shadow-xl text-sm sm:text-base">
+                                                <span class="font-semibold flex items-center truncate pr-2">
+                                                    🔗 {{ $enlace['titulo_enlace'] }}
+                                                </span>
+                                                <svg class="w-4 h-4 sm:w-6 sm:h-6 group-hover:translate-x-2 transition-transform duration-300 flex-shrink-0"
+                                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                                    </path>
+                                                </svg>
+                                            </a>
+                                        @endforeach
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
             </div>
-        </div>
         @endif
 
         <!-- Sección de conclusión -->
