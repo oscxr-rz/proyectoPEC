@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class AuthAdmin
+class AuthUser
 {
     /**
      * Handle an incoming request.
@@ -16,12 +16,11 @@ class AuthAdmin
     public function handle(Request $request, Closure $next): Response
     {
         $token = session()->get('token');
-        $tipo = session()->get('tipo');
 
-        if (!$token && $tipo != 'Administrador') {
-            return redirect()->back();
+        if (!$token) {
+            return redirect()->route('login');
         }
-
+        
         return $next($request);
     }
 }

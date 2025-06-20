@@ -26,8 +26,13 @@ class GoogleController extends SessionController
 
                 $this->CreateSession($findUser);
 
-                return redirect()->route('home');
+                $tipo = session()->get('tipo');
 
+                if ($tipo == 'Administrador') {
+                    return redirect()->route('admin.inicio');
+                }
+
+                return redirect()->route('home');
             } else {
 
                 $nameParts = explode(' ', $googleUser->name, 2);
@@ -44,7 +49,6 @@ class GoogleController extends SessionController
                 $this->CreateSession($newUser);
 
                 return redirect()->route('home');
-                
             }
         } catch (\Exception $e) {
             return redirect('/login')->with('mensaje', 'Error en el login');

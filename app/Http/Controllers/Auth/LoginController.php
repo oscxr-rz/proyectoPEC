@@ -25,10 +25,15 @@ class LoginController extends SessionController
             ]);
         }
 
-        if(Hash::check($request['contraseña'], $usuario['contraseña']))
-        {
+        if (Hash::check($request['contraseña'], $usuario['contraseña'])) {
             $this->CreateSession($usuario);
-            
+
+            $tipo = session()->get('tipo');
+
+            if ($tipo == 'Administrador') {
+                return redirect()->route('admin.inicio');
+            }
+
             return redirect()->back()->with([
                 'mensaje' => 'Se inició sesion correctamente'
             ]);

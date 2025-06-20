@@ -17,6 +17,7 @@ use App\Http\Controllers\GaleriaController;
 use App\Http\Controllers\ProyectosController;
 use App\Http\Controllers\TestimoniosController;
 use App\Http\Middleware\AuthAdmin;
+use App\Http\Middleware\AuthUser;
 use Illuminate\Routing\ResolvesRouteDependencies;
 use Illuminate\Support\Facades\Route;
 
@@ -47,18 +48,19 @@ Route::get('/password/reset/{email}/{token}', [ResetPasswordController::class, '
 Route::post('/password/reset/update', [ResetPasswordController::class, 'updatePassword'])->name('reset.password');
 
 //Cerrer sesion
-Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
+Route::post('/logout', [LogoutController::class, 'logout'])->name('logout')->middleware(AuthUser::class);
 
 //Donar dispositivos
 Route::get('/donar dispositivo', [DonacionesController::class, 'index'])->name('donacion');
-Route::post('/donar dispositivo', [DonacionesController::class, 'donacion'])->name('donacion.user');
-Route::put('/donaciones/historial', [DonacionesController::class, 'cancelar'])->name('donacion.cancelar');
-
-Route::get('/donaciones/historial', [DonacionesController::class, 'historial'])->name('donacion.historial');
+Route::middleware(AuthUser::class)->group(function () {
+    Route::post('/donar dispositivo', [DonacionesController::class, 'donacion'])->name('donacion.user');
+    Route::put('/donaciones/historial', [DonacionesController::class, 'cancelar'])->name('donacion.cancelar');
+    Route::get('/donaciones/historial', [DonacionesController::class, 'historial'])->name('donacion.historial');
+});
 
 
 //Administradores
-Route::prefix('/admin')->group(function () {
+Route::prefix('/admin')->middleware(AuthAdmin::class)->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin.inicio');
     Route::get('/dispositivos', [AdminDispositivosController::class, 'index'])->name('admin.dispositivos');
     Route::get('/donaciones', [AdminDonacionesController::class, 'index'])->name('admin.donaciones');

@@ -15,7 +15,7 @@ class SessionController extends Controller
         session([
             'token' => $token, 
             'id_usuario' => $usuario['id_usuario'],
-            'tipo' => $usuario['tipo']
+            'tipo' => $usuario['tipo_usuario']
         ]);
     }
 }

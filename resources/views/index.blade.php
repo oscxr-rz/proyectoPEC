@@ -84,40 +84,46 @@
     <section class="hero-section flex items-center justify-center text-white relative min-h-screen">
         <!-- Background Image -->
         <div class="absolute inset-0">
-            <img src="{{ Storage::url('images/index/enmexico.jpg') }}" 
-                 alt=""
-                 class="w-full h-full object-cover object-center">
+            <img src="{{ Storage::url('images/index/enmexico.jpg') }}" alt=""
+                class="w-full h-full object-cover object-center">
         </div>
 
         <!-- Gradient Overlay - hacia la derecha -->
-        <div class="absolute inset-0 bg-gradient-to-r from-transparent from-0% via-transparent via-0% to-black to-100%"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-transparent from-0% via-transparent via-0% to-black to-100%">
+        </div>
 
         <!-- Content Container -->
         <div class="relative z-10 w-full">
             <div class="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
                 <!-- Espacio vacío para mostrar la imagen -->
                 <div class="hidden lg:block"></div>
-                
+
                 <!-- Contenido del texto -->
                 <div class="flex items-center justify-center lg:justify-start px-4 lg:px-8 xl:px-12">
                     <div class="text-center lg:text-left max-w-2xl">
                         <!-- Main Title -->
-                        <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black mb-4 lg:mb-6 text-white drop-shadow-2xl">
+                        <h1
+                            class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black mb-4 lg:mb-6 text-white drop-shadow-2xl">
                             Basura Tecnológica
                         </h1>
 
                         <!-- Subtitle -->
-                        <p class="text-base sm:text-lg lg:text-xl xl:text-2xl text-white font-medium leading-relaxed mb-6 lg:mb-8 backdrop-blur-sm bg-black/40 rounded-2xl p-4 lg:p-6 border border-white/20 shadow-2xl">
-                            Conoce el impacto ambiental de los desechos electrónicos y cómo podemos contribuir a un futuro más sostenible
+                        <p
+                            class="text-base sm:text-lg lg:text-xl xl:text-2xl text-white font-medium leading-relaxed mb-6 lg:mb-8 backdrop-blur-sm bg-black/40 rounded-2xl p-4 lg:p-6 border border-white/20 shadow-2xl">
+                            Conoce el impacto ambiental de los desechos electrónicos y cómo podemos contribuir a un
+                            futuro más sostenible
                         </p>
 
                         <!-- CTA Button -->
                         <div class="flex justify-center lg:justify-start">
-                            <button class="group relative overflow-hidden bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold py-4 px-8 lg:py-5 lg:px-12 rounded-full text-base lg:text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-green-500/30">
+                            <button
+                                class="group relative overflow-hidden bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold py-4 px-8 lg:py-5 lg:px-12 rounded-full text-base lg:text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-green-500/30">
                                 <span class="relative z-10 flex items-center">
                                     SABER MÁS
-                                    <svg class="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                                    <svg class="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300"
+                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
                                     </svg>
                                 </span>
                             </button>
@@ -130,7 +136,8 @@
         <!-- Scroll indicator -->
         <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
             <svg class="w-6 h-6 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3">
+                </path>
             </svg>
         </div>
     </section>
@@ -537,99 +544,27 @@
     <div id="infoModal" class="fixed inset-0 bg-black bg-opacity-50 modal hidden z-50"
         onclick="closeModal('infoModal')">
         <div class="flex items-center justify-center min-h-screen p-4">
-            <div class="bg-gray-800 rounded-3xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden modal-content"
+            <div class="bg-gray-800 rounded-3xl shadow-2xl max-w-5xl w-full max-h-[85vh] overflow-hidden modal-content"
                 onclick="event.stopPropagation()">
                 <!-- Header del Modal -->
-                <div class="relative">
-                    <img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=1000&h=400&fit=crop"
-                        alt="Desechos electrónicos" class="w-full h-64 object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div class="relative h-[75vh]">
+                    <div class="h-full overflow-auto bg-gray-900"
+                        style="scrollbar-width: thin; scrollbar-color: #4B5563 #1F2937;">
+                        <img src="{{ Storage::url('images/index/Flyer_PEC.png') }}" alt="Desechos electrónicos"
+                            class="min-w-full min-h-full object-contain">
+                    </div>
                     <button onclick="closeModal('infoModal')"
-                        class="absolute top-4 right-4 text-white bg-black bg-opacity-50 hover:bg-opacity-70 rounded-full p-2 transition-all duration-300">
+                        class="absolute top-4 right-4 text-white bg-black bg-opacity-70 hover:bg-opacity-90 rounded-full p-3 transition-all duration-300 z-20 shadow-lg">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M6 18L18 6M6 6l12 12"></path>
                         </svg>
                     </button>
-                    <div class="absolute bottom-6 left-6">
-                        <h3 class="text-3xl font-bold text-white mb-2">Crisis Global del E-waste</h3>
-                        <p class="text-green-200 text-lg">Datos actualizados sobre el impacto ambiental</p>
-                    </div>
-                </div>
-
-                <!-- Contenido del Modal -->
-                <div class="p-8 max-h-96 overflow-y-auto">
-                    <div class="space-y-6">
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <div class="bg-red-900/30 rounded-xl p-6">
-                                <h4 class="text-xl font-bold text-red-400 mb-3">🚨 Datos Alarmantes</h4>
-                                <ul class="text-white space-y-2">
-                                    <li>• Solo el 22.3% se recicla correctamente</li>
-                                    <li>• 77.7% termina en vertederos o es mal gestionado</li>
-                                    <li>• $62 mil millones en materiales perdidos anualmente</li>
-                                    <li>• Crecimiento del 5% anual en generación</li>
-                                </ul>
-                            </div>
-
-                            <div class="bg-green-900/30 rounded-xl p-6">
-                                <h4 class="text-xl font-bold text-green-400 mb-3">💡 Soluciones</h4>
-                                <ul class="text-white space-y-2">
-                                    <li>• Programas de recolección formal</li>
-                                    <li>• Educación sobre reciclaje responsable</li>
-                                    <li>• Diseño circular de productos</li>
-                                    <li>• Políticas gubernamentales efectivas</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="bg-gray-700 rounded-xl p-6">
-                            <h4 class="text-xl font-bold text-blue-400 mb-3">🌍 Impactos por Región</h4>
-                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                                <div>
-                                    <div class="text-2xl font-bold text-yellow-400">34.2Mt</div>
-                                    <div class="text-gray-300 text-sm">Asia</div>
-                                </div>
-                                <div>
-                                    <div class="text-2xl font-bold text-blue-400">13.8Mt</div>
-                                    <div class="text-gray-300 text-sm">Europa</div>
-                                </div>
-                                <div>
-                                    <div class="text-2xl font-bold text-green-400">7.4Mt</div>
-                                    <div class="text-gray-300 text-sm">América</div>
-                                </div>
-                                <div>
-                                    <div class="text-2xl font-bold text-red-400">2.9Mt</div>
-                                    <div class="text-gray-300 text-sm">África</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="bg-gradient-to-r from-purple-900/50 to-pink-900/50 rounded-xl p-6">
-                            <h4 class="text-xl font-bold text-purple-300 mb-3">🔬 Componentes Tóxicos Principales</h4>
-                            <div class="grid md:grid-cols-3 gap-4 text-sm text-white">
-                                <div>
-                                    <strong class="text-red-400">Metales Pesados:</strong>
-                                    <br>Plomo, Mercurio, Cadmio
-                                </div>
-                                <div>
-                                    <strong class="text-orange-400">Químicos:</strong>
-                                    <br>BFR, PVC, Ftalatos
-                                </div>
-                                <div>
-                                    <strong class="text-yellow-400">Gases:</strong>
-                                    <br>CFC, HCFC, Amoníaco
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
                 <!-- Footer del Modal -->
                 <div class="bg-gray-700 px-8 py-4">
                     <div class="flex justify-between items-center">
-                        <div class="text-gray-300 text-sm">
-                            Fuente: Global E-waste Monitor 2024
-                        </div>
                         <button onclick="closeModal('infoModal')"
                             class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg transition-colors duration-300">
                             Cerrar
