@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminDispositivosController;
 use App\Http\Controllers\Admin\AdminDonacionesController;
 use App\Http\Controllers\Admin\AdminEstadisticasController;
 use App\Http\Controllers\Admin\AdminProyectosController;
+use App\Http\Controllers\Admin\AdminTestimoniosController;
 use App\Http\Controllers\Admin\AdminVentasController;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\Auth\LoginController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\DonacionesController;
 use App\Http\Controllers\GaleriaController;
 use App\Http\Controllers\ProyectosController;
+use App\Http\Controllers\TestimoniosController;
 use App\Http\Middleware\AuthAdmin;
 use Illuminate\Routing\ResolvesRouteDependencies;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +26,7 @@ Route::view('/centros de acopio', 'centros_acopio')->name('centros');
 Route::view('/estadisticas', 'estadisticas')->name('estadisticas');
 Route::get('/galeria de imagenes', [GaleriaController::class, 'index'])->name('galeria');
 Route::get('/proyectos', [ProyectosController::class, 'index'])->name('proyectos');
+Route::get('/testimonios', [TestimoniosController::class, 'index'])->name('testimonios');
 
 //Inicio de sesion
 Route::view('/login', 'auth.login')->name('login');
@@ -61,10 +64,15 @@ Route::prefix('/admin')->group(function () {
     Route::get('/donaciones', [AdminDonacionesController::class, 'index'])->name('admin.donaciones');
     Route::get('/estadisticas', [AdminEstadisticasController::class, 'index'])->name('admin.estadisticas');
     Route::get('/ventas', [AdminVentasController::class, 'index'])->name('admin.ventas');
-    
+
     //Proyectos
     Route::get('/proyectos', [AdminProyectosController::class, 'index'])->name('admin.proyectos');
     Route::post('/proyectos', [AdminProyectosController::class, 'create'])->name('admin.proyectos.post');
     Route::put('/proyectos', [AdminProyectosController::class, 'put'])->name('admin.proyectos.put');
     Route::delete('/proyectos', [AdminProyectosController::class, 'delete'])->name('admin.proyectos.delete');
+
+    //Testimonios
+    Route::get('/testimonios', [AdminTestimoniosController::class, 'index'])->name('admin.testimonios');
+    Route::post('/testimonios', [AdminTestimoniosController::class, 'create'])->name('admin.testimonios.post');
+    Route::delete('/testimonios', [AdminTestimoniosController::class, 'delete'])->name('admin.testimonios.delete');
 });

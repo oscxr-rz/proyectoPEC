@@ -45,6 +45,12 @@
                         </a>
                     </li>
                     <li>
+                        <a href="{{ route('testimonios') }}" 
+                           class="px-4 py-2 text-green-100 hover:text-white hover:bg-gradient-to-r hover:from-emerald-600 hover:to-emerald-700 rounded-lg transition-all duration-200 font-medium hover:shadow-md">
+                            Testimonios
+                        </a>
+                    </li>
+                    <li>
                         <a href="{{ route('donacion') }}" 
                            class="px-4 py-2 text-green-100 hover:text-white hover:bg-gradient-to-r hover:from-emerald-600 hover:to-emerald-700 rounded-lg transition-all duration-200 font-medium hover:shadow-md">
                             Donar Dispositivo

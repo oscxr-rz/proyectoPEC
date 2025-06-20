@@ -6,5 +6,6 @@
         <li><a href="{{ route('admin.estadisticas') }}">Estadisticas</a></li>
         <li><a href="{{ route('admin.ventas') }}">Ventas</a></li>
         <li><a href="{{ route('admin.proyectos') }}">Proyectos</a></li>
+        <li><a href="{{ route('admin.testimonios') }}">Testimonios</a></li>
     </ul>
 </nav>
