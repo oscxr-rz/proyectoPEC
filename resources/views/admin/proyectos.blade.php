@@ -164,7 +164,7 @@
                             @foreach ($proyecto['imagenes'] as $index => $imagen)
                                 <div
                                     onclick="openModal([@foreach ($proyecto['imagenes'] as $img)'{{ $img['imagen'] }}'@if (!$loop->last),@endif @endforeach], {{ $index }})">
-                                    <img src="{{ $imagen['imagen'] }}" alt="Imagen del proyecto">
+                                    <img src="{{ asset('storage/' . $imagen['imagen']) }}" alt="Imagen del proyecto">
                                 </div>
                             @endforeach
                         </div>
@@ -222,22 +222,43 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="semestre_{{ $proyecto['id_galeria'] }}">Semestre:</label>
-                                <input type="text" name="semestre" id="semestre_{{ $proyecto['id_galeria'] }}"
-                                    value="{{ $proyecto['semestre'] ?? '' }}">
+                                <label for="semestre">Semestre:</label>
+                                <select name="semestre"
+                                    class="w-full px-4 py-3 bg-slate-600/50 border border-gray-500/50 rounded-xl text-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-300">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                </select>
                             </div>
 
                             <div class="form-group">
-                                <label for="grupo_{{ $proyecto['id_galeria'] }}">Grupo:</label>
-                                <input type="text" name="grupo" id="grupo_{{ $proyecto['id_galeria'] }}"
-                                    value="{{ $proyecto['grupo'] ?? '' }}">
+                                <label for="grupo">Grupo:</label>
+                                <select name="grupo"
+                                    class="w-full px-4 py-3 bg-slate-600/50 border border-gray-500/50 rounded-xl text-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-300">
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                    <option value="E">E</option>
+                                    <option value="F">F</option>
+                                    <option value="G">G</option>
+                                </select>
                             </div>
 
                             <div class="form-group">
-                                <label for="especialidad_{{ $proyecto['id_galeria'] }}">Especialidad:</label>
-                                <input type="text" name="especialidad"
-                                    id="especialidad_{{ $proyecto['id_galeria'] }}"
-                                    value="{{ $proyecto['especialidad'] ?? '' }}">
+                                <label for="especialidad">Especialidad:</label>
+                                <select name="especialidad"
+                                    class="w-full px-4 py-3 bg-slate-600/50 border border-gray-500/50 rounded-xl text-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-300">
+                                    <option value="Alimentos y Bebidas">Alimentos y Bebidas</option>
+                                    <option value="Contabilidad">Contabilidad</option>
+                                    <option value="Programación">Programación</option>
+                                    <option value="Construcción">Construcción</option>
+                                    <option value="Logística">Logística</option>
+                                    <option value="Ofimática">Ofimática</option>
+                                </select>
                             </div>
 
                             <div class="form-group">
@@ -272,7 +293,8 @@
                                     @foreach ($proyecto['imagenes'] as $imagen)
                                         <div class="imagen-item"
                                             id="imagen-existente-{{ $imagen['id_galeria_imagen'] ?? $loop->index }}">
-                                            <img src="{{ $imagen['imagen'] }}" alt="Imagen" class="imagen-preview">
+                                            <img src="{{ asset('storage/' . $imagen['imagen']) }}" alt="Imagen"
+                                                class="imagen-preview">
                                             <input type="hidden"
                                                 name="imagenes_existentes[{{ $loop->index }}][id_galeria_imagen]"
                                                 value="{{ $imagen['id_galeria_imagen'] ?? '' }}">
