@@ -9,7 +9,7 @@
     <title>E-waste Oaxaca - Gestión Local de Residuos Electrónicos</title>
 </head>
 
-<body class="bg-gradient-to-br from-green-50 to-emerald-100 min-h-screen">
+<body class="min-h-screen bg-gray-900">
     @include('layouts.nav')
 
     <main class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-6 sm:py-8 md:py-10 lg:py-12">
