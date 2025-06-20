@@ -5,39 +5,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://cdn.tailwindcss.com"></script>
+    @vite('resources/css/app.css')
     <title>Basura Tecnológica - E-waste</title>
     <style>
         .modal {
             backdrop-filter: blur(8px);
             animation: fadeIn 0.3s ease-out;
         }
-        
+
         .modal-content {
             animation: slideUp 0.3s ease-out;
         }
-        
+
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
-        
+
         @keyframes slideUp {
-            from { 
+            from {
                 opacity: 0;
                 transform: translateY(30px) scale(0.9);
             }
-            to { 
+
+            to {
                 opacity: 1;
                 transform: translateY(0) scale(1);
             }
         }
-        
+
         .image-hover {
             transition: all 0.3s ease;
             cursor: pointer;
         }
-        
+
         .image-hover:hover {
             transform: scale(1.02);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
@@ -46,7 +52,7 @@
 </head>
 
 <body class="bg-gradient-to-br from-green-50 to-emerald-100 min-h-screen">
-@include('layouts.nav')
+    @include('layouts.nav')
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <!-- Hero Section -->
@@ -58,14 +64,15 @@
                 Conoce el impacto ambiental de los desechos electrónicos y cómo podemos contribuir a un futuro más
                 sostenible
             </p>
-            
+
             <!-- Nueva imagen con modal -->
             <div class="max-w-2xl mx-auto mb-8">
-                <div class="bg-white rounded-3xl shadow-xl overflow-hidden image-hover" onclick="openModal('infoModal')">
-                    <img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=800&h=400&fit=crop" 
-                         alt="Panorama general de desechos electrónicos" 
-                         class="w-full h-64 object-cover">
-                    <div class="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+                <div class="bg-white rounded-3xl shadow-xl overflow-hidden image-hover"
+                    onclick="openModal('infoModal')">
+                    <img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=800&h=400&fit=crop"
+                        alt="Panorama general de desechos electrónicos" class="w-full h-64 object-cover">
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
                         <span class="text-white text-lg font-semibold bg-black bg-opacity-50 px-6 py-3 rounded-full">
                             🔍 Descubre más sobre el E-waste
                         </span>
@@ -95,7 +102,7 @@
                         </p>
                     </div>
                     <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop" alt="Basura tecnológica"
+                        <img src="{{ Storage::url('images/index/basura_tecnologica.jpg') }}" alt=""
                             class="absolute inset-0 w-full h-full object-cover">
                     </div>
                 </div>
@@ -107,7 +114,7 @@
             <div class="bg-white rounded-3xl shadow-xl overflow-hidden">
                 <div class="grid lg:grid-cols-2 gap-0 min-h-[400px]">
                     <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1604187351574-c75ca79f5807?w=800&h=600&fit=crop" alt="Dispositivos electrónicos desechados"
+                        <img src="{{ Storage::url('images/index/basura_tecnologica2.jpeg') }}" alt=""
                             class="absolute inset-0 w-full h-full object-cover">
                     </div>
                     <div class="p-8 lg:p-12 flex flex-col justify-center order-1 lg:order-2">
@@ -140,9 +147,10 @@
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                <div
+                    class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
                     <div class="relative h-48">
-                        <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=400&h=300&fit=crop" alt="Aire acondicionado"
+                        <img src="{{ Storage::url('images/index/aire_acondicionado.jpeg') }}" alt=""
                             class="absolute inset-0 w-full h-full object-cover">
                     </div>
                     <div class="p-6">
@@ -152,9 +160,10 @@
                     </div>
                 </div>
 
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                <div
+                    class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
                     <div class="relative h-48">
-                        <img src="https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400&h=300&fit=crop" alt="Monitores"
+                        <img src="{{ Storage::url('images/index/monitores.jpeg') }}" alt=""
                             class="absolute inset-0 w-full h-full object-cover">
                     </div>
                     <div class="p-6">
@@ -164,9 +173,10 @@
                     </div>
                 </div>
 
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                <div
+                    class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
                     <div class="relative h-48">
-                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop" alt="Lavadoras"
+                        <img src="{{ Storage::url('images/index/lavadoras.jpeg') }}" alt=""
                             class="absolute inset-0 w-full h-full object-cover">
                     </div>
                     <div class="p-6">
@@ -176,9 +186,10 @@
                     </div>
                 </div>
 
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                <div
+                    class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
                     <div class="relative h-48">
-                        <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop" alt="Lámparas"
+                        <img src="{{ Storage::url('images/index/lamparas.jpeg') }}" alt=""
                             class="absolute inset-0 w-full h-full object-cover">
                     </div>
                     <div class="p-6">
@@ -192,7 +203,8 @@
 
         <!-- Environmental Impact Section -->
         <section class="mb-20">
-            <div class="bg-gradient-to-r from-green-800 to-emerald-700 rounded-3xl shadow-xl text-white overflow-hidden">
+            <div
+                class="bg-gradient-to-r from-green-800 to-emerald-700 rounded-3xl shadow-xl text-white overflow-hidden">
                 <div class="grid lg:grid-cols-2 gap-0 min-h-[400px]">
                     <div class="p-8 lg:p-12 flex flex-col justify-center">
                         <h2 class="text-3xl font-bold mb-6">
@@ -210,7 +222,7 @@
                         </p>
                     </div>
                     <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=800&h=600&fit=crop" alt="Impacto ambiental"
+                        <img src="{{ Storage::url('images/index/enmexico.jpg') }}" alt=""
                             class="absolute inset-0 w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-l from-transparent to-green-800/20"></div>
                     </div>
@@ -315,7 +327,8 @@
         </section>
 
         <!-- Call to Action -->
-        <section class="text-center bg-gradient-to-r from-green-600 to-emerald-600 rounded-3xl shadow-xl p-12 text-white">
+        <section
+            class="text-center bg-gradient-to-r from-green-600 to-emerald-600 rounded-3xl shadow-xl p-12 text-white">
             <h2 class="text-3xl font-bold mb-6">¡Únete al cambio!</h2>
             <p class="text-xl mb-8 max-w-2xl mx-auto">
                 Cada acción cuenta para reducir el impacto de los desechos electrónicos en nuestro planeta.
@@ -335,19 +348,21 @@
     </main>
 
     <!-- Modal -->
-    <div id="infoModal" class="fixed inset-0 bg-black bg-opacity-50 modal hidden z-50" onclick="closeModal('infoModal')">
+    <div id="infoModal" class="fixed inset-0 bg-black bg-opacity-50 modal hidden z-50"
+        onclick="closeModal('infoModal')">
         <div class="flex items-center justify-center min-h-screen p-4">
-            <div class="bg-white rounded-3xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden modal-content" onclick="event.stopPropagation()">
+            <div class="bg-white rounded-3xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden modal-content"
+                onclick="event.stopPropagation()">
                 <!-- Header del Modal -->
                 <div class="relative">
-                    <img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=1000&h=400&fit=crop" 
-                         alt="Desechos electrónicos" 
-                         class="w-full h-64 object-cover">
+                    <img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=1000&h=400&fit=crop"
+                        alt="Desechos electrónicos" class="w-full h-64 object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                    <button onclick="closeModal('infoModal')" 
-                            class="absolute top-4 right-4 text-white bg-black bg-opacity-50 hover:bg-opacity-70 rounded-full p-2 transition-all duration-300">
+                    <button onclick="closeModal('infoModal')"
+                        class="absolute top-4 right-4 text-white bg-black bg-opacity-50 hover:bg-opacity-70 rounded-full p-2 transition-all duration-300">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12"></path>
                         </svg>
                     </button>
                     <div class="absolute bottom-6 left-6">
@@ -355,7 +370,7 @@
                         <p class="text-green-200 text-lg">Un problema que crece cada año</p>
                     </div>
                 </div>
-                
+
                 <!-- Contenido del Modal -->
                 <div class="p-8 overflow-y-auto max-h-96">
                     <div class="grid md:grid-cols-2 gap-8">
@@ -366,16 +381,16 @@
                                     <p class="text-red-900"><strong>Tecnologicos simples:</strong> </p>
                                     <li class="text-gray-800"><strong>Tijeras</strong> </li>
                                     <li class="text-gray-800"><strong>Cubiertos metálicos
-                                      (cucharas, tenedore, cuchillos)</strong> </li>
+                                            (cucharas, tenedore, cuchillos)</strong> </li>
                                     <li class="text-gray-800"><strong> Herramientas mecánicas
- (pinzas, martillos
- desarmadores, llaves, etc.)</strong> </li>
+                                            (pinzas, martillos
+                                            desarmadores, llaves, etc.)</strong> </li>
                                     <li class="text-gray-800"><strong> Chapas</strong> </li>
                                     <li class="text-gray-800"><strong>Llaves de puertas y de agua</strong> </li>
                                     <li class="text-gray-800"><strong>Monedas antiguas</strong> </li>
                                     <li class="text-gray-800"><strong> Trastes de aluminio y peltre.</strong> </li>
                                     <li class="text-gray-800"><strong>Padecería de sillas
- metálicas.</strong> </li>
+                                            metálicas.</strong> </li>
                                 </div>
                                 <div class="bg-orange-50 border-l-4 border-orange-400 p-4 rounded">
                                     <li class="text-orange-900"> <strong>Tecnologicos compuestos</strong></li>
@@ -385,26 +400,27 @@
                                     <li class="text-yellow-800"> <strong> Pantallas de computadora y TV</strong></li>
                                     <li class="text-yellow-800"> <strong> Laptops</strong></li>
                                     <li class="text-yellow-800"> <strong> Tablets</strong></li>
-                                    <li class="text-yellow-800"> <strong> Multifuncionales, Impresoras, copiadora, escaner</strong></li>
-                                    <li class="text-yellow-800"> <strong>Máquina de escribir eléctrica y mecánica</strong></li>
+                                    <li class="text-yellow-800"> <strong> Multifuncionales, Impresoras, copiadora,
+                                            escaner</strong></li>
+                                    <li class="text-yellow-800"> <strong>Máquina de escribir eléctrica y
+                                            mecánica</strong></li>
                                     <li class="text-yellow-800"> <strong>Cámara fotográfica</strong></li>
                                     <li class="text-yellow-800"> <strong>Teclados</strong></li>
                                     <li class="text-yellow-800"> <strong> control remoto</strong></li>
-                                    <li class="text-yellow-800"> <strong>Modulares, Estéreos, tocadiscos, videocasetera, radios, grabadoras.</strong></li>
+                                    <li class="text-yellow-800"> <strong>Modulares, Estéreos, tocadiscos,
+                                            videocasetera, radios, grabadoras.</strong></li>
                                     <li class="text-yellow-800"> <strong>Herramientas de motor (taladro, esmeril,
- desbrozadora, cortadora, bomba de agua, podadora,sierra eléctrica</strong></li>
+                                            desbrozadora, cortadora, bomba de agua, podadora,sierra eléctrica</strong>
+                                    </li>
                                     <li class="text-yellow-800"> <strong>Electrodomésticos. (Planchas, lavadoras,
- estufas Hornos de microondas, licuadoras, ventiladores)</strong></li>
+                                            estufas Hornos de microondas, licuadoras, ventiladores)</strong></li>
                                     <li class="text-yellow-800"> <strong>Juguetes electrónicos.</strong></li>
-                                    <li class="text-yellow-800"> <strong> Extensiones, cables normales de plástico. </strong></li>
-                                    
-                                    
-
+                                    <li class="text-yellow-800"> <strong> Extensiones, cables normales de plástico.
+                                        </strong></li>
                                 </div>
-                               
                             </div>
                         </div>
-                        
+
                         <div>
                             <h4 class="text-2xl font-bold text-green-800 mb-4">Lugar y Horario</h4>
                             <div class="space-y-4">
@@ -412,42 +428,36 @@
                                     <span class="text-2xl mr-3">🏫</span>
                                     <div>
                                         <h2 class="font-semibold text-gray-800">CBTis No. 150.</h2>
-                                        
+
                                     </div>
                                 </div>
-                                
+
                                 <div class="flex items-start">
                                     <span class="text-2xl mr-3">📅</span>
                                     <div>
                                         <h2 class="font-semibold text-gray-800">26 de junio 2025.</h2>
-                                        
+
                                     </div>
                                 </div>
-                                
+
                                 <div class="flex items-start">
                                     <span class="text-2xl mr-3">🕒</span>
                                     <div>
-                                        <h2 class="font-semibold text-gray-800">De 9:00  A  13:00 hrs.</h2>
-                                        
+                                        <h2 class="font-semibold text-gray-800">De 9:00 A 13:00 hrs.</h2>
+
                                     </div>
                                 </div>
-                                
-                                
+
                             </div>
                         </div>
                     </div>
-                    
-                    
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Footer placeholder -->
-    <footer class="bg-green-800 text-white text-center py-8 mt-20">
-        <p>&copy; 2024 EcoTech. Todos los derechos reservados.</p>
-    </footer>
-
+    
+    @include('layouts.footer')
+    
     <script>
         function openModal(modalId) {
             document.getElementById(modalId).classList.remove('hidden');
@@ -467,19 +477,17 @@
         });
     </script>
     <script>
-  window.addEventListener('load', function () {
-    // Quita la clase 'hidden' para mostrar el modal al cargar
-    document.getElementById('infoModal').classList.remove('hidden');
-  });
+        window.addEventListener('load', function() {
+            // Quita la clase 'hidden' para mostrar el modal al cargar
+            document.getElementById('infoModal').classList.remove('hidden');
+        });
 
-  function cerrarModal() {
-    // Vuelve a ocultar el modal
-    document.getElementById('infoModal').classList.add('hidden');
-  }
-  </script>
- @include('layouts.footer')
+        function cerrarModal() {
+            // Vuelve a ocultar el modal
+            document.getElementById('infoModal').classList.add('hidden');
+        }
+    </script>
 
 </body>
 
 </html>
-

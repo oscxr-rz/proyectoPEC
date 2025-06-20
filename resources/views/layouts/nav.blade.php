@@ -118,6 +118,10 @@
                    class="block px-4 py-3 text-gray-200 hover:bg-custom-primary/50 hover:text-white rounded-lg transition-all duration-200 font-medium mx-2">
                     Proyectos
                 </a>
+                <a href="{{ route('testimonios') }}" 
+                   class="block px-4 py-3 text-gray-200 hover:bg-custom-primary/50 hover:text-white rounded-lg transition-all duration-200 font-medium mx-2">
+                    Testimonios
+                </a>
                 <a href="{{ route('donacion') }}" 
                    class="block px-4 py-3 text-gray-200 hover:bg-custom-primary/50 hover:text-white rounded-lg transition-all duration-200 font-medium mx-2">
                     Donar Dispositivo
