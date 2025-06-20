@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/css/app.css')
-    <title>E-waste Oaxaca - Gestión Local de Residuos Electrónicos</title>
+    <title>E-waste - Centros de acopio</title>
 </head>
 
 <body class="min-h-screen bg-gray-900">
@@ -353,29 +353,6 @@
             </div>
         </section>
 
-        <!-- Call to Action -->
-        <section
-            class="text-center bg-gradient-to-r from-green-600 to-emerald-600 rounded-xl sm:rounded-2xl lg:rounded-3xl shadow-xl p-6 sm:p-8 lg:p-12 text-white">
-            <h2 class="text-xl sm:text-2xl lg:text-3xl font-bold mb-3 sm:mb-4 lg:mb-6 px-2">
-                🌟 Impacto de las Regulaciones
-            </h2>
-            <p
-                class="text-base sm:text-lg lg:text-xl mb-4 sm:mb-6 lg:mb-8 max-w-4xl mx-auto px-3 sm:px-4 leading-relaxed">
-                Estas leyes ayudan a controlar, reducir y reciclar la basura electrónica, protegiendo tanto al medio
-                ambiente como a las personas en todos los niveles: local, estatal y nacional.
-            </p>
-            <div class="flex flex-wrap justify-center gap-2 sm:gap-3 lg:gap-4">
-                <div class="bg-white/20 backdrop-blur-sm rounded-full px-3 py-2 sm:px-4 sm:py-2 lg:px-6 lg:py-3">
-                    <span class="font-semibold text-xs sm:text-sm lg:text-base">🛡️ Protección ambiental</span>
-                </div>
-                <div class="bg-white/20 backdrop-blur-sm rounded-full px-3 py-2 sm:px-4 sm:py-2 lg:px-6 lg:py-3">
-                    <span class="font-semibold text-xs sm:text-sm lg:text-base">♻️ Reciclaje responsable</span>
-                </div>
-                <div class="bg-white/20 backdrop-blur-sm rounded-full px-3 py-2 sm:px-4 sm:py-2 lg:px-6 lg:py-3">
-                    <span class="font-semibold text-xs sm:text-sm lg:text-base">🌍 Salud pública</span>
-                </div>
-            </div>
-        </section>
     </main>
 
     @include('layouts.footer')

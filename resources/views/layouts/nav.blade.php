@@ -23,7 +23,7 @@
                     <li>
                         <a href="{{ route('centros') }}" 
                            class="px-4 py-2 text-green-100 hover:text-white hover:bg-gradient-to-r hover:from-emerald-600 hover:to-emerald-700 rounded-lg transition-all duration-200 font-medium hover:shadow-md">
-                            Centros de Acopio
+                            Centros de acopio
                         </a>
                     </li>
                     <li>
@@ -104,7 +104,7 @@
                 </a>
                 <a href="{{ route('centros') }}" 
                    class="block px-4 py-3 text-gray-200 hover:bg-custom-primary/50 hover:text-white rounded-lg transition-all duration-200 font-medium mx-2">
-                    Centros de Acopio
+                    Centros de acopio
                 </a>
                 <a href="{{ route('estadisticas') }}" 
                    class="block px-4 py-3 text-gray-200 hover:bg-custom-primary/50 hover:text-white rounded-lg transition-all duration-200 font-medium mx-2">

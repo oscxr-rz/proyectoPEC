@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/css/app.css')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
-    <title>E-waste México - Residuos Electrónicos</title>
+    <title>E-waste - Estadísticas</title>
     <style>
         .chart-container {
             position: relative;
