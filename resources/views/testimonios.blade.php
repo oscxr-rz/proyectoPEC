@@ -119,7 +119,7 @@
                 <div class="testimonial-grid">
                     @foreach($testimonios as $index => $testimonio)
                         <div class="bg-white rounded-3xl shadow-xl overflow-hidden video-hover" 
-                             onclick="openVideoModal('{{ $testimonio }}', '{{ pathinfo($testimonio, PATHINFO_FILENAME) }}', {{ $index }})">
+                             onclick="openVideoModal('{{ $testimonio }}', {{ $index }})">
                             <div class="relative">
                                 <!-- Video Thumbnail -->
                                 <div class="relative h-64 bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center">
@@ -140,9 +140,6 @@
                                 
                                 <!-- Card Content -->
                                 <div class="p-6">
-                                    <h3 class="text-xl font-bold text-gray-800 mb-2">
-                                        {{ pathinfo($testimonio, PATHINFO_FILENAME) }}
-                                    </h3>
                                     <div class="flex items-center text-sm text-gray-600 mb-4">
                                         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
@@ -165,25 +162,6 @@
                             </div>
                         </div>
                     @endforeach
-                </div>
-            </section>
-
-            <!-- Call to Action -->
-            <section class="text-center bg-gradient-to-r from-green-600 to-emerald-600 rounded-3xl shadow-xl p-12 text-white">
-                <h2 class="text-3xl font-bold mb-4">¿Tienes una experiencia que compartir?</h2>
-                <p class="text-xl mb-8 max-w-2xl mx-auto">
-                    Tu testimonio puede inspirar y ayudar a otros. Únete a nuestra comunidad de voces auténticas.
-                </p>
-                <div class="flex flex-wrap justify-center gap-4">
-                    <div class="bg-white/20 backdrop-blur-sm rounded-full px-6 py-3">
-                        <span class="font-semibold">🎥 Comparte tu historia</span>
-                    </div>
-                    <div class="bg-white/20 backdrop-blur-sm rounded-full px-6 py-3">
-                        <span class="font-semibold">💬 Inspira a otros</span>
-                    </div>
-                    <div class="bg-white/20 backdrop-blur-sm rounded-full px-6 py-3">
-                        <span class="font-semibold">🌟 Forma parte del cambio</span>
-                    </div>
                 </div>
             </section>
 
