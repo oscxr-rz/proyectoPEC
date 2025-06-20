@@ -22,14 +22,14 @@
     </style>
 </head>
 
-<body class="bg-gradient-to-br from-slate-50 to-slate-100 min-h-screen">
+<body class="bg-gray-900 min-h-screen">
     @include('layouts.nav')
 
     <main class="container mx-auto px-4 py-8">
         <!-- Header -->
         <div class="text-center mb-12">
             <h1
-                class="text-5xl font-bold bg-gradient-to-r from-green-600 to-green-800 bg-clip-text text-transparent mb-4">
+                class="text-5xl font-bold text-white mb-4">
                 Galería de Trabajos
             </h1>
             <p class="text-gray-600 text-lg">Explora nuestros proyectos organizados por semestre</p>
@@ -44,7 +44,7 @@
             <div class="mb-16">
                 <!-- Semestre Header -->
                 <div class="text-center mb-8">
-                    <h2 class="text-3xl font-bold text-gray-800 mb-2">Semestre {{ $semestre }}</h2>
+                    <h2 class="text-3xl font-bold text-white mb-2">Semestre {{ $semestre }}</h2>
                     <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full"></div>
                 </div>
 
@@ -234,14 +234,14 @@
 
                     <!-- Navegación del carrusel -->
                     <button onclick="moveCarousel('{{ $semestre }}', -1)"
-                        class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 rounded-full p-3 shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110 z-10">
+                        class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-white rounded-full p-3 shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110 z-10">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M15 19l-7-7 7-7"></path>
                         </svg>
                     </button>
                     <button onclick="moveCarousel('{{ $semestre }}', 1)"
-                        class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 rounded-full p-3 shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110 z-10">
+                        class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-white rounded-full p-3 shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110 z-10">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
                             </path>

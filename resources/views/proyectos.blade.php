@@ -238,40 +238,40 @@
 </head>
 
 <body
-    class="bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 min-h-screen relative overflow-x-hidden eco-pattern">
+    class="bg-gray-900 min-h-screen relative overflow-x-hidden eco-pattern">
     <!-- Formas de fondo decorativas mejoradas -->
     <div class="fixed inset-0 pointer-events-none">
         <!-- Elementos principales - ajustados para responsive -->
         <div
-            class="absolute top-20 left-2 sm:left-10 w-40 h-40 sm:w-80 sm:h-80 bg-green-400 rounded-full shape-blob animate-float">
+            class="absolute top-20 left-2 sm:left-10 w-40 h-40 sm:w-80 sm:h-80 rounded-full shape-blob animate-float">
         </div>
         <div
-            class="absolute top-40 sm:top-60 right-2 sm:right-20 w-48 h-48 sm:w-96 sm:h-96 bg-emerald-400 rounded-full shape-blob animate-float-delayed">
+            class="absolute top-40 sm:top-60 right-2 sm:right-20 w-48 h-48 sm:w-96 sm:h-96 rounded-full shape-blob animate-float-delayed">
         </div>
         <div
-            class="absolute bottom-40 left-1/4 w-36 h-36 sm:w-72 sm:h-72 bg-teal-400 rounded-full shape-blob animate-float-slow">
+            class="absolute bottom-40 left-1/4 w-36 h-36 sm:w-72 sm:h-72 rounded-full shape-blob animate-float-slow">
         </div>
         <div
-            class="absolute top-1/3 right-1/3 w-32 h-32 sm:w-64 sm:h-64 bg-lime-400 rounded-full shape-blob animate-float">
+            class="absolute top-1/3 right-1/3 w-32 h-32 sm:w-64 sm:h-64 rounded-full shape-blob animate-float">
         </div>
 
         <!-- Elementos adicionales para más dinamismo - ocultos en móvil -->
         <div
-            class="hidden sm:block absolute bottom-20 right-10 w-48 h-48 bg-green-300 rounded-full shape-blob animate-float-delayed">
+            class="hidden sm:block absolute bottom-20 right-10 w-48 h-48 rounded-full shape-blob animate-float-delayed">
         </div>
         <div
-            class="hidden sm:block absolute top-2/3 left-10 w-56 h-56 bg-emerald-300 rounded-full shape-blob animate-float-slow">
+            class="hidden sm:block absolute top-2/3 left-10 w-56 h-56 rounded-full shape-blob animate-float-slow">
         </div>
         <div
-            class="hidden lg:block absolute top-10 right-1/2 w-40 h-40 bg-teal-300 rounded-full shape-blob animate-float">
+            class="hidden lg:block absolute top-10 right-1/2 w-40 h-40 rounded-full shape-blob animate-float">
         </div>
 
         <!-- Formas orgánicas adicionales - solo desktop -->
         <div
-            class="hidden lg:block absolute top-1/2 left-1/2 w-32 h-32 bg-green-200 rounded-full shape-blob animate-float-delayed opacity-50">
+            class="hidden lg:block absolute top-1/2 left-1/2 w-32 h-32 rounded-full shape-blob animate-float-delayed opacity-50">
         </div>
         <div
-            class="hidden lg:block absolute bottom-1/3 right-1/4 w-44 h-44 bg-emerald-200 rounded-full shape-blob animate-float opacity-30">
+            class="hidden lg:block absolute bottom-1/3 right-1/4 w-44 h-44 rounded-full shape-blob animate-float opacity-30">
         </div>
     </div>
 
@@ -322,16 +322,15 @@
         <div class="text-center mb-12 sm:mb-24">
             <div class="relative">
                 <h1
-                    class="text-3xl sm:text-5xl lg:text-7xl font-black text-green-800 mb-4 sm:mb-8 text-shadow relative px-2">
-                    <span class="recycle-icon"></span>Nuestros <span class="gradient-text">Proyectos</span>
+                    class="text-3xl sm:text-5xl lg:text-7xl font-black text-white mb-4 sm:mb-8 text-shadow relative px-2">
+                    <span class="recycle-icon"></span>Nuestros Proyectos
                 </h1>
             </div>
             <div
-                class="w-20 sm:w-40 h-1 sm:h-2 bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500 mx-auto mb-5 sm:mb-10 rounded-full shadow-lg">
+                class="w-20 sm:w-40 h-1 sm:h-2 mx-auto mb-5 sm:mb-10 rounded-full shadow-lg">
             </div>
-            <p class="text-sm sm:text-xl text-green-700 max-w-4xl mx-auto leading-relaxed font-medium px-4">
-                Descubre los proyectos innovadores y sostenibles desarrollados por nuestros estudiantes
-                <br class="hidden sm:block">a lo largo de los seis semestres del programa de centro de acopio
+            <p class="text-sm sm:text-xl text-white max-w-4xl mx-auto leading-relaxed font-medium px-4">
+                Descubre los proyectos desarrollados por nuestros estudiantes
             </p>
         </div>
 
@@ -976,25 +975,6 @@
                 </div>
             </div>
         @endif
-
-        <!-- Sección de conclusión -->
-        <div class="text-center mt-32 mb-16">
-            <div class="glass-effect rounded-3xl p-16 shadow-2xl border border-green-200/50">
-                <h2 class="text-4xl font-bold gradient-text mb-8">
-                    🎓 Transformando el Futuro con Proyectos Sostenibles
-                </h2>
-                <p class="text-xl text-green-700 max-w-4xl mx-auto leading-relaxed">
-                    Cada proyecto representa un paso hacia un futuro más sostenible.
-                    Nuestros estudiantes están creando soluciones innovadoras que impactan
-                    positivamente en el medio ambiente y la sociedad.
-                </p>
-                <div class="flex justify-center mt-8 space-x-6 text-4xl">
-                    <span class="animate-pulse">🌍</span>
-                    <span class="animate-pulse" style="animation-delay: 0.3s">💡</span>
-                    <span class="animate-pulse" style="animation-delay: 0.6s">🚀</span>
-                </div>
-            </div>
-        </div>
     </main>
 
     @include('layouts.footer')

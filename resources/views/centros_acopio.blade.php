@@ -9,7 +9,7 @@
     <title>E-waste - Centros de acopio</title>
 </head>
 
-<body class="min-h-screen bg-gray-900">
+<body class="min-h-screen">
     @include('layouts.nav')
 
     <main class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-6 sm:py-8 md:py-10 lg:py-12">
@@ -17,7 +17,7 @@
         <div class="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16">
             <h1
                 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-green-800 mb-3 sm:mb-4 lg:mb-6 leading-tight px-2">
-                Gestión de E-waste en Oaxaca
+                Centros de acopio
             </h1>
             <p
                 class="text-base sm:text-lg md:text-xl lg:text-xl text-green-700 max-w-3xl mx-auto leading-relaxed px-3 sm:px-4">

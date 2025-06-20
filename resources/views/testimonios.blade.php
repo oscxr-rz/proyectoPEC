@@ -86,29 +86,29 @@
     </style>
 </head>
 
-<body class="min-h-screen">
+<body class="bg-gray-900 min-h-screen">
     @include('layouts.nav')
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <!-- Hero Section -->
         <div class="text-center mb-16">
-            <h1 class="text-5xl font-bold text-green-800 mb-6 leading-tight">
+            <h1 class="text-5xl font-bold text-white mb-6 leading-tight">
                 🎬 Testimonios
             </h1>
-            <p class="text-xl text-green-700 max-w-3xl mx-auto leading-relaxed mb-8">
+            <p class="text-xl text-white max-w-3xl mx-auto leading-relaxed mb-8">
                 Descubre las experiencias reales de nuestra comunidad a través de estos testimonios auténticos
             </p>
             
             <!-- Estadísticas -->
             <div class="flex justify-center items-center space-x-8 mb-8">
                 <div class="text-center">
-                    <div class="text-3xl font-bold text-green-600">{{ count($testimonios) }}</div>
-                    <div class="text-green-700 font-medium">{{ count($testimonios) === 1 ? 'Testimonio' : 'Testimonios' }}</div>
+                    <div class="text-3xl font-bold text-white">{{ count($testimonios) }}</div>
+                    <div class="text-white font-medium">{{ count($testimonios) === 1 ? 'Testimonio' : 'Testimonios' }}</div>
                 </div>
-                <div class="w-px h-12 bg-green-300"></div>
+                <div class="w-px h-12 bg-white"></div>
                 <div class="text-center">
-                    <div class="text-3xl font-bold text-emerald-600">100%</div>
-                    <div class="text-emerald-700 font-medium">Auténticos</div>
+                    <div class="text-3xl font-bold text-white">100%</div>
+                    <div class="text-white font-medium">Auténticos</div>
                 </div>
             </div>
         </div>
