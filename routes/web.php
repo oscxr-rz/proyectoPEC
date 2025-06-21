@@ -18,6 +18,7 @@ use App\Http\Controllers\ProyectosController;
 use App\Http\Controllers\TestimoniosController;
 use App\Http\Middleware\AuthAdmin;
 use App\Http\Middleware\AuthUser;
+use App\Http\Middleware\NotLogin;
 use Illuminate\Routing\ResolvesRouteDependencies;
 use Illuminate\Support\Facades\Route;
 
@@ -30,12 +31,12 @@ Route::get('/proyectos', [ProyectosController::class, 'index'])->name('proyectos
 Route::get('/testimonios', [TestimoniosController::class, 'index'])->name('testimonios');
 
 //Inicio de sesion
-Route::view('/login', 'auth.login')->name('login');
-Route::post('/login', [LoginController::class, 'login'])->name('login.user');
+Route::view('/login', 'auth.login')->name('login')->middleware(NotLogin::class);
+Route::post('/login', [LoginController::class, 'login'])->name('login.user')->middleware(NotLogin::class);
 
 //Crear cuenta
-Route::view('/register', 'auth.register')->name('register');
-Route::post('/register', [RegisterController::class, 'register'])->name('register.user');
+Route::view('/register', 'auth.register')->name('register')->middleware(NotLogin::class);
+Route::post('/register', [RegisterController::class, 'register'])->name('register.user')->middleware(NotLogin::class);
 
 //Con google
 Route::get('auth/google', [GoogleController::class, 'redirectToGoole'])->name('auth.google');
