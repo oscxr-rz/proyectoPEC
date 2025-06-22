@@ -18,7 +18,7 @@ class AuthAdmin
         $token = session()->get('token');
         $tipo = session()->get('tipo');
 
-        if (!$token && $tipo != 'Administrador') {
+        if (!$token || $tipo != 'Administrador') {
             return redirect()->back();
         }
 
