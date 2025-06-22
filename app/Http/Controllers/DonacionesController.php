@@ -21,7 +21,7 @@ class DonacionesController extends Controller
 
     public function historial()
     {
-        $historialData = Donacion::where('id_usuario', session('id_usuario'))->with('dispositivos.categoria')->get();
+        $historialData = Donacion::where('id_usuario', session('id_usuario'))->with('dispositivos.categoria')->get()->sortByDesc('fecha_donacion');
         $historial = $historialData->toArray();
 
         return view('donacion.historial', compact('historial'));
@@ -63,7 +63,7 @@ class DonacionesController extends Controller
                 $cantidad = $this->cantidadDispositivos($dispositivos);
                 $donacion = $this->crearDonacion(session('id_usuario'), $cantidad, $fecha_donacion);
                 $dispositivosCreate = $this->crearDispositivos($dispositivos, $donacion['id_donacion']);
-                
+
                 return redirect()->back()->with([
                     'mensaje' => 'La donación se creó exitosamente tu id de donación es: ' . $donacion['id_donacion']
                 ]);

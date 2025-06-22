@@ -21,4 +21,9 @@ class Donacion extends Model
     {
         return $this->hasMany(Dispositivo::class, 'id_donacion');
     }
+
+    public function usuario()
+    {
+        return $this->belongsTo(Usuario::class, 'id_usuario');
+    }
 }

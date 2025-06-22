@@ -67,7 +67,11 @@ Route::middleware([AuthUser::class])->group(function () {
 Route::prefix('/admin')->middleware([AuthAdmin::class])->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin.inicio');
     Route::get('/dispositivos', [AdminDispositivosController::class, 'index'])->name('admin.dispositivos');
+
+    //Donaciones
     Route::get('/donaciones', [AdminDonacionesController::class, 'index'])->name('admin.donaciones');
+    Route::put('/donaciones', [AdminDonacionesController::class, 'update'])->name('admin.donaciones.put');
+
     Route::get('/estadisticas', [AdminEstadisticasController::class, 'index'])->name('admin.estadisticas');
     Route::get('/ventas', [AdminVentasController::class, 'index'])->name('admin.ventas');
 
