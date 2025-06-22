@@ -13,6 +13,11 @@ class RegisterController extends SessionController
 {
     public function index()
     {
+        if(session('token'))
+        {
+            return redirect()->route('home');
+        }
+        
         return view('auth.register');
     }
     

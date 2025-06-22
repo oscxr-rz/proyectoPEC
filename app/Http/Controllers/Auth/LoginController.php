@@ -12,6 +12,11 @@ class LoginController extends SessionController
 {
     public function index()
     {
+        if(session('token'))
+        {
+            return redirect()->route('home');
+        }
+        
         return view('auth.login');
     }
 
