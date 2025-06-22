@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Hash;
 
 class LoginController extends SessionController
 {
+    public function index()
+    {
+        return view('auth.login');
+    }
+
     public function login(Request $request)
     {
         $request->validate([
@@ -34,8 +39,10 @@ class LoginController extends SessionController
                 return redirect()->route('admin.inicio');
             }
 
+            return redirect()->route('home');
+        } else {
             return redirect()->back()->with([
-                'mensaje' => 'Se inició sesion correctamente'
+                'mensaje' => 'Contraseña incorrecta'
             ]);
         }
     }
