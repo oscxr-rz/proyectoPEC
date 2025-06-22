@@ -35,22 +35,22 @@ class AdminTestimoniosController extends Controller
     }
 
     public function delete(Request $request)
-{
-    $request->validate([
-        'video' => 'required|string',
-    ]);
+    {
+        $request->validate([
+            'video' => 'required|string',
+        ]);
 
-    $videoPath = $request['video'];
-    
-    if (Storage::disk('public')->exists($videoPath)) {
-        Storage::disk('public')->delete($videoPath);
-        return redirect()->route('admin.testimonios')->with([
-            'mensaje' => 'Video eliminado correctamente.'
-        ]);
-    } else {
-        return redirect()->back()->with([
-            'mensaje' => 'El video no se pudo eliminar.'
-        ]);
+        $videoPath = $request['video'];
+
+        if (Storage::disk('public')->exists($videoPath)) {
+            Storage::disk('public')->delete($videoPath);
+            return redirect()->route('admin.testimonios')->with([
+                'mensaje' => 'Video eliminado correctamente.'
+            ]);
+        } else {
+            return redirect()->back()->with([
+                'mensaje' => 'El video no se pudo eliminar.'
+            ]);
+        }
     }
-}
 }
