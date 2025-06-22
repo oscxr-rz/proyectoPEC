@@ -656,6 +656,19 @@
             }
         });
     </script>
+
+    <script>
+        // Colocar al final del body, antes de </body>
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                history.pushState(null, null, location.href);
+                window.onpopstate = function() {
+                    history.go(1);
+                };
+            }, 1);
+        });
+    </script>
+
 </body>
 
 </html>

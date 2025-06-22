@@ -18,6 +18,7 @@ use App\Http\Controllers\ProyectosController;
 use App\Http\Controllers\TestimoniosController;
 use App\Http\Middleware\AuthAdmin;
 use App\Http\Middleware\AuthUser;
+use App\Http\Middleware\NotLogin;
 use Illuminate\Routing\ResolvesRouteDependencies;
 use Illuminate\Support\Facades\Route;
 
@@ -29,38 +30,41 @@ Route::get('/galeria de imagenes', [GaleriaController::class, 'index'])->name('g
 Route::get('/proyectos', [ProyectosController::class, 'index'])->name('proyectos');
 Route::get('/testimonios', [TestimoniosController::class, 'index'])->name('testimonios');
 
-//Inicio de sesion
-Route::get('/login', [LoginController::class, 'index'])->name('login');
-Route::post('/login', [LoginController::class, 'login'])->name('login.user');
 
-//Crear cuenta
-Route::get('/register', [RegisterController::class, 'index'])->name('register');
-Route::post('/register', [RegisterController::class, 'register'])->name('register.user');
+Route::middleware([NotLogin::class])->group(function () {
+    //Inicio de sesion
+    Route::get('/login', [LoginController::class, 'index'])->name('login');
+    Route::post('/login', [LoginController::class, 'login'])->name('login.user');
 
-//Con google
-Route::get('auth/google', [GoogleController::class, 'redirectToGoole'])->name('auth.google');
-Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback'])->name('auth.google.callback');
+    //Crear cuenta
+    Route::get('/register', [RegisterController::class, 'index'])->name('register');
+    Route::post('/register', [RegisterController::class, 'register'])->name('register.user');
 
-//Actualizar contraseña
-Route::view('password/reset', 'auth.reset')->name('reset');
-Route::post('password/reset', [ResetPasswordController::class, 'sendMail'])->name('reset.send');
-Route::get('/password/reset/{email}/{token}', [ResetPasswordController::class, 'index'])->name('password');
-Route::post('/password/reset/update', [ResetPasswordController::class, 'updatePassword'])->name('reset.password');
+    //Con google
+    Route::get('auth/google', [GoogleController::class, 'redirectToGoole'])->name('auth.google');
+    Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback'])->name('auth.google.callback');
+
+    //Actualizar contraseña
+    Route::view('password/reset', 'auth.reset')->name('reset');
+    Route::post('password/reset', [ResetPasswordController::class, 'sendMail'])->name('reset.send');
+    Route::get('/password/reset/{email}/{token}', [ResetPasswordController::class, 'index'])->name('password');
+    Route::post('/password/reset/update', [ResetPasswordController::class, 'updatePassword'])->name('reset.password');
+});
 
 //Cerrer sesion
 Route::post('/logout', [LogoutController::class, 'logout'])->name('logout')->middleware(AuthUser::class);
 
 //Donar dispositivos
 Route::get('/donar dispositivo', [DonacionesController::class, 'index'])->name('donacion');
-Route::middleware(AuthUser::class)->group(function () {
+Route::middleware([AuthUser::class])->group(function () {
     Route::post('/donar dispositivo', [DonacionesController::class, 'donacion'])->name('donacion.user');
-    Route::put('/donaciones/historial', [DonacionesController::class, 'cancelar'])->name('donacion.cancelar');
     Route::get('/donaciones/historial', [DonacionesController::class, 'historial'])->name('donacion.historial');
+    Route::put('/donaciones/historial', [DonacionesController::class, 'cancelar'])->name('donacion.cancelar');
 });
 
 
 //Administradores
-Route::prefix('/admin')->middleware(AuthAdmin::class)->group(function () {
+Route::prefix('/admin')->middleware([AuthAdmin::class])->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin.inicio');
     Route::get('/dispositivos', [AdminDispositivosController::class, 'index'])->name('admin.dispositivos');
     Route::get('/donaciones', [AdminDonacionesController::class, 'index'])->name('admin.donaciones');

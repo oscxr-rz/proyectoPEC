@@ -50,8 +50,6 @@ class RegisterController extends SessionController
 
         $this->CreateSession($usuario);
 
-        return redirect()->back()->with([
-            'mensaje' => 'La cuenta se creo correctamente'
-        ]);
+        return redirect()->route('home');
     }
 }
