@@ -19,7 +19,7 @@ class AdminTestimoniosController extends Controller
     {
         try {
             $request->validate([
-                'video' => 'required|file|mimes:mp4,avi,mov|max:20480', // Max 20MB
+                'video' => 'required|file|mimes:mp4,avi,mov|max:524288', // Max 20MB
             ]);
 
             $path = $request->file('video')->store('videos/testimonios', 'public');
