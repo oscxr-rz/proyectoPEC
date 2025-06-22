@@ -24,7 +24,7 @@ class AdminProyectosController extends Controller
         try {
             $request->validate([
                 'nombre_docente' => 'required|string|max:255',
-                'UAC' => 'required|string|max:255',
+                'UAC' => 'nullable|string|max:255',
                 'semestre' => 'required|integer|between:1,6',
                 'grupo' => 'required|string|in:A,B,C,D,E,F,G',
                 'especialidad' => 'required|string|in:Alimentos y Bebidas,Contabilidad,Programación,Construcción,Logística,Ofimática',
@@ -41,7 +41,7 @@ class AdminProyectosController extends Controller
 
             $proyecto = Galeria::create([
                 'nombre_docente' => $request['nombre_docente'],
-                'UAC' => $request['UAC'],
+                'UAC' => $request['UAC'] ?? null, 
                 'semestre' => $request['semestre'],
                 'grupo' => $request['grupo'],
                 'especialidad' => $request['especialidad'],
