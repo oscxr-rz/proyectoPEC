@@ -7,7 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/css/app.css')
     <title>Donaciones - Admin</title>
-    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body class="bg-slate-800">
@@ -291,6 +290,8 @@
         @endif
     </main>
 
+    @include('admin.layouts.footer')
+    
     <script>
         // Script para el buscador
         document.addEventListener('DOMContentLoaded', function() {
@@ -355,7 +356,6 @@
         });
     </script>
 
-    @include('admin.layouts.footer')
 </body>
 
 </html>
