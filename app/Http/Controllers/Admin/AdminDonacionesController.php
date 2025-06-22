@@ -40,7 +40,7 @@ class AdminDonacionesController extends Controller
                 'estado' => 'Recibida'
             ]);
 
-            Mail::to($request['correo_usuario'])->send(new UpdateEstadoDonacion($request['correo_usuario'], $dispositivos));
+            Mail::to($request['correo_usuario'])->send(new UpdateEstadoDonacion($request['correo_usuario'], $dispositivos, $donacion['id_donacion']));
 
             return redirect()->back()->with('mensaje', 'Estado de la donación actualizado correctamente.');
 

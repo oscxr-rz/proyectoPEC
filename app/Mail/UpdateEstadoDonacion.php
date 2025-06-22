@@ -15,13 +15,15 @@ class UpdateEstadoDonacion extends Mailable
 
     public $email;
     public $dispositivos;
+    public $id;
     /**
      * Create a new message instance.
      */
-    public function __construct($email, $dispositivos)
+    public function __construct($email, $dispositivos, $id)
     {
         $this->email = $email;
         $this->dispositivos = $dispositivos;
+        $this->id = $id;
     }
 
     /**
@@ -48,6 +50,7 @@ class UpdateEstadoDonacion extends Mailable
         return new Content(
             view: 'email.updateEstadoDonacion',
             with: [
+                'id' => $this->id,
                 'dispositivos' => $this->dispositivos,
             ]
         );

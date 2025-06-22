@@ -307,6 +307,10 @@
                                 style="background-color: #f8f9fa; border: 1px solid #dee2e6; border-radius: 10px; margin-bottom: 22px;">
                                 <tr>
                                     <td style="padding: 18px;" class="mobile-padding-small">
+                                        <h3
+                                            style="color: #b61b18; font-size: 18px; font-weight: bold; margin: 0 0 12px 0;">
+                                            ID de donación: {{ $id }}
+                                        </h3>
                                         <h4
                                             style="color: #228B22; font-size: 15px; font-weight: bold; margin: 0 0 12px 0;">
                                             📱 Dispositivos donados:
