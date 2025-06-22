@@ -24,4 +24,9 @@ class Dispositivo extends Model
     {
         return $this->belongsTo(Categoria::class, 'id_categoria');
     }
+
+    public function donacion()
+    {
+        return $this->belongsTo(Donacion::class, 'id_donacion');
+    }
 }
