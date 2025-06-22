@@ -16,38 +16,45 @@ class ResetPasswordController extends Controller
 {
     public function sendMail(Request $request)
     {
-        $request->validate([
-            'correo' => 'required|email'
-        ]);
+        try {
 
-        $usuario = Usuario::where('correo', $request['correo'])->first();
+            $request->validate([
+                'correo' => 'required|email'
+            ]);
 
-        if (!$usuario) {
+            $usuario = Usuario::where('correo', $request['correo'])->first();
+
+            if (!$usuario) {
+                return redirect()->back()->with([
+                    'mensaje' => 'Este correo no está asociado a ninguna cuenta'
+                ]);
+            }
+
+            Password_reset::where('id_usuario', $usuario['id_usuario'])->delete();
+
+            $token = $this->tokenGenerate();
+
+            $password_reset = Password_reset::create([
+                'id_usuario' => $usuario['id_usuario'],
+                'token' => Hash::make($token)
+            ]);
+
+            if (!$password_reset) {
+                return redirect()->back()->with([
+                    'mensaje' => 'No se pudo crear el token'
+                ]);
+            }
+
+            Mail::to($usuario['correo'])->send(new PasswordResetMail($token, $usuario['correo']));
+
             return redirect()->back()->with([
-                'mensaje' => 'Este correo no está asociado a ninguna cuenta'
+                'mensaje' => 'Se envió un enlace de recupereación a su correo'
+            ]);
+        } catch (\Exception $e) {
+            return redirect()->back()->with([
+                'mensaje' => 'Error al enviar el correo: ' . $e->getMessage()
             ]);
         }
-
-        Password_reset::where('id_usuario', $usuario['id_usuario'])->delete();
-
-        $token = $this->tokenGenerate();
-
-        $password_reset = Password_reset::create([
-            'id_usuario' => $usuario['id_usuario'],
-            'token' => Hash::make($token)
-        ]);
-
-        if (!$password_reset) {
-            return redirect()->back()->with([
-                'mensaje' => 'No se pudo crear el token'
-            ]);
-        }
-
-        Mail::to($usuario['correo'])->send(new PasswordResetMail($token, $usuario['correo']));
-
-        return redirect()->back()->with([
-            'mensaje' => 'Se envió un enlace de recupereación a su correo'
-        ]);
     }
 
     private function tokenGenerate()
@@ -59,59 +66,91 @@ class ResetPasswordController extends Controller
 
     public function index($email, $token)
     {
-        $usuario = Usuario::where('correo', $email)->first();
+        try {
+            $usuario = Usuario::where('correo', $email)->first();
 
-        if ($usuario) {
-            $password_reset = Password_reset::where('id_usuario', $usuario['id_usuario'])->first();
-            if ($password_reset) {
-                if (Hash::check($token, $password_reset['token'])) {
-                    $id = $usuario['id_usuario'];
-                    return view('auth.passwordreset', compact('usuario'));
-                }
+            if (!$usuario) {
+                return redirect()->route('reset')->with([
+                    'mensaje' => 'Usuario no encontrado'
+                ]);
             }
+
+            $password_reset = Password_reset::where('id_usuario', $usuario['id_usuario'])->first();
+
+            if (!$password_reset) {
+                return redirect()->route('reset')->with([
+                    'mensaje' => 'Token de restablecimiento no válido'
+                ]);
+            }
+
+            if (!Hash::check($token, $password_reset['token'])) {
+                return redirect()->route('reset')->with([
+                    'mensaje' => 'Token de restablecimiento incorrecto'
+                ]);
+            }
+
+            return view('auth.passwordreset', compact('usuario'));
+        } catch (\Exception $e) {
+            return redirect()->route('reset')->with([
+                'mensaje' => 'Error al procesar la solicitud: ' . $e->getMessage()
+            ]);
         }
     }
 
     public function updatePassword(Request $request)
     {
-        $data = $request->validate([
-            'id_usuario' => 'required|integer|min:1',
-            'contraseña' => 'required|string|min:5',
-            'contraseña2' => 'required|string|min:5'
-        ]);
-
-        if ($request['contraseña2'] != $request['contraseña']) {
-            return redirect()->back()->with([
-                'mensaje' => 'Las contraseñas deben ser las misma'
+        try {
+            $data = $request->validate([
+                'id_usuario' => 'required|integer|min:1',
+                'contraseña' => 'required|string|min:5',
+                'contraseña2' => 'required|string|min:5'
             ]);
-        }
 
-        return DB::transaction(function () use ($data) {
-            $usuario = $this->update($data['contraseña'], $data['id_usuario']);
-
-            if (!$usuario) {
+            if ($request['contraseña2'] != $request['contraseña']) {
                 return redirect()->back()->with([
-                    'mensaje' => 'No se pudo actualzar la contraseña'
+                    'mensaje' => 'Las contraseñas deben ser iguales'
                 ]);
             }
 
-            $token = $this->deleteToken($usuario['id_usuario']);
+            $resultado = DB::transaction(function () use ($data) {
+                $usuario = Password_reset::where('id_usuario', $data['id_usuario'])->first();
 
-            if (!$token) {
-                return redirect()->back()->with([
-                    'mensaje' => 'No se pudo actualzar la contraseña'
-                ]);
-            }
+                if (!$usuario) {
+                    throw new \Exception('Token de restablecimiento no encontrado');
+                }
 
-            return redirect()->back()->with([
+                $usuarioActualizado = $this->update($data['contraseña'], $data['id_usuario']);
+
+                if (!$usuarioActualizado) {
+                    throw new \Exception('No se pudo actualizar la contraseña');
+                }
+
+                $tokenEliminado = $this->deleteToken($usuarioActualizado['id_usuario']);
+
+                if (!$tokenEliminado) {
+                    throw new \Exception('No se pudo eliminar el token');
+                }
+
+                return true;
+            });
+
+            return redirect()->route('login')->with([
                 'mensaje' => 'Contraseña actualizada correctamente'
             ]);
-        });
+        } catch (\Exception $e) {
+            return redirect()->back()->with([
+                'mensaje' => 'Error al actualizar la contraseña: ' . $e->getMessage()
+            ]);
+        }
     }
 
     private function update($password, $id)
     {
         $usuario = Usuario::where('id_usuario', $id)->first();
+
+        if (!$usuario) {
+            return false;
+        }
 
         $usuario->update([
             'contraseña' => Hash::make($password)
@@ -123,7 +162,12 @@ class ResetPasswordController extends Controller
     private function deleteToken($id)
     {
         $token = Password_reset::where('id_usuario', $id)->first();
+
+        if (!$token) {
+            return false;
+        }
+
         $token->delete();
-        return $token;
+        return true;
     }
 }
