@@ -1,9 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\AdminDispositivosController;
 use App\Http\Controllers\Admin\AdminDonacionesController;
 use App\Http\Controllers\Admin\AdminEstadisticasController;
+use App\Http\Controllers\Admin\AdminInventarioController;
 use App\Http\Controllers\Admin\AdminProyectosController;
 use App\Http\Controllers\Admin\AdminTestimoniosController;
 use App\Http\Controllers\Admin\AdminVentasController;
@@ -66,7 +66,11 @@ Route::middleware([AuthUser::class])->group(function () {
 //Administradores
 Route::prefix('/admin')->middleware([AuthAdmin::class])->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin.inicio');
-    Route::get('/dispositivos', [AdminDispositivosController::class, 'index'])->name('admin.dispositivos');
+
+    //Inventario
+    Route::get('/dispositivos', [AdminInventarioController::class, 'index'])->name('admin.inventario');
+    Route::put('/dispositivos', [AdminInventarioController::class, 'update'])->name('admin.inventario.put');
+    Route::delete('/dispositivos', [AdminInventarioController::class, 'delete'])->name('admin.inventario.delete');
 
     //Donaciones
     Route::get('/donaciones', [AdminDonacionesController::class, 'index'])->name('admin.donaciones');

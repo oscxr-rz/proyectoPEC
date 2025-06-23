@@ -6,5 +6,22 @@ use Illuminate\Database\Eloquent\Model;
 
 class Inventario extends Model
 {
-    //
+    protected $connection = 'mysql';
+    protected $table = 'inventario';
+    protected $primaryKey = 'id_inventario';
+    protected $fillable = [
+        'fecha_ingreso',
+        'fecha_salida',
+        'disponible',
+        'precio_estimado',
+        'observaciones_inventario',
+        'id_dispositivo',
+        'id_paquete'
+    ];
+    public $timestamps = false;
+
+    public function dispositivo()
+    {
+        return $this->hasOne(Dispositivo::class, 'id_dispositivo');
+    }
 }
