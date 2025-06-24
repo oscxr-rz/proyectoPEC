@@ -415,6 +415,8 @@
                                                 class="block text-sm font-medium text-gray-300 mb-2">Semestre:</label>
                                             <select name="semestre"
                                                 class="w-full px-4 py-3 bg-slate-700/50 border border-gray-500/50 rounded-xl text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300">
+                                                <option value="{{ $proyecto['semestre'] }}">
+                                                    {{ $proyecto['semestre'] }}</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
@@ -429,6 +431,8 @@
                                                 class="block text-sm font-medium text-gray-300 mb-2">Grupo:</label>
                                             <select name="grupo"
                                                 class="w-full px-4 py-3 bg-slate-700/50 border border-gray-500/50 rounded-xl text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300">
+                                                <option value="{{ $proyecto['grupo'] }}">{{ $proyecto['grupo'] }}
+                                                </option>
                                                 <option value="A">A</option>
                                                 <option value="B">B</option>
                                                 <option value="C">C</option>
@@ -444,6 +448,8 @@
                                                 class="block text-sm font-medium text-gray-300 mb-2">Especialidad:</label>
                                             <select name="especialidad"
                                                 class="w-full px-4 py-3 bg-slate-700/50 border border-gray-500/50 rounded-xl text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300">
+                                                <option value="{{ $proyecto['especialidad'] }}">
+                                                    {{ $proyecto['especialidad'] }}</option>
                                                 <option value="Alimentos y Bebidas">Alimentos y Bebidas</option>
                                                 <option value="Contabilidad">Contabilidad</option>
                                                 <option value="Programación">Programación</option>

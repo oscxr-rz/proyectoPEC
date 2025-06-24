@@ -52,7 +52,7 @@
             </li>
 
             <li class="flex-shrink-0">
-                <a href="{{ route('admin.inventario') }}"
+                <a href="{{ route('admin.paquetes') }}"
                     class="group flex items-center gap-2 sm:gap-3 px-3 sm:px-5 py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-white/8 hover:bg-white/15 text-white/90 hover:text-white transition-all duration-500 hover:scale-105 hover:shadow-lg hover:shadow-white/10 border border-white/10 hover:border-white/20 backdrop-blur-sm">
                     <div class="p-1 rounded-lg bg-white/10 group-hover:bg-white/20 transition-all duration-300">
                         <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

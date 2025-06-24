@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminDonacionesController;
 use App\Http\Controllers\Admin\AdminEstadisticasController;
 use App\Http\Controllers\Admin\AdminInventarioController;
+use App\Http\Controllers\Admin\AdminPaquetesController;
 use App\Http\Controllers\Admin\AdminProyectosController;
 use App\Http\Controllers\Admin\AdminTestimoniosController;
 use App\Http\Controllers\Admin\AdminVentasController;
@@ -72,11 +73,19 @@ Route::prefix('/admin')->middleware([AuthAdmin::class])->group(function () {
     Route::put('/dispositivos', [AdminInventarioController::class, 'update'])->name('admin.inventario.put');
     Route::delete('/dispositivos', [AdminInventarioController::class, 'delete'])->name('admin.inventario.delete');
 
+    //Paquetes
+    Route::get('/paquetes', [AdminPaquetesController::class, 'index'])->name('admin.paquetes');
+    Route::post('/paquetes', [AdminPaquetesController::class, 'create'])->name('admin.paquetes.post');
+    Route::put('/paquetes', [AdminPaquetesController::class, 'update'])->name('admin.paquetes.put');
+    Route::delete('/paquetes', [AdminPaquetesController::class, 'delete'])->name('admin.paquetes.delete');
+
     //Donaciones
     Route::get('/donaciones', [AdminDonacionesController::class, 'index'])->name('admin.donaciones');
     Route::put('/donaciones', [AdminDonacionesController::class, 'update'])->name('admin.donaciones.put');
 
     Route::get('/estadisticas', [AdminEstadisticasController::class, 'index'])->name('admin.estadisticas');
+
+    //Ventas
     Route::get('/ventas', [AdminVentasController::class, 'index'])->name('admin.ventas');
 
     //Proyectos

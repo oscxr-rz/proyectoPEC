@@ -22,6 +22,6 @@ class Inventario extends Model
 
     public function dispositivo()
     {
-        return $this->hasOne(Dispositivo::class, 'id_dispositivo');
+        return $this->belongsTo(Dispositivo::class, 'id_dispositivo');
     }
 }
