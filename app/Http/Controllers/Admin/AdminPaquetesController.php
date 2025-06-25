@@ -37,8 +37,7 @@ class AdminPaquetesController extends Controller
                 $paquete = Paquete::create([
                     'peso_total' => $request['peso_total'] ?? null,
                     'descripcion' => $request['descripcion'] ?? null,
-                    'id_venta' => $request['id_venta'] ?? null,
-                    'fecha_creacion' => now(),
+                    'id_venta' => $request['id_venta'] ?? null
                 ]);
 
                 // Asignar inventarios al paquete si se proporcionaron

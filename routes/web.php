@@ -30,6 +30,8 @@ Route::view('/estadisticas', 'estadisticas')->name('estadisticas');
 Route::get('/galeria de imagenes', [GaleriaController::class, 'index'])->name('galeria');
 Route::get('/proyectos', [ProyectosController::class, 'index'])->name('proyectos');
 Route::get('/testimonios', [TestimoniosController::class, 'index'])->name('testimonios');
+Route::view('/PEC', 'pec')->name('pec');
+Route::view('/acerca de', 'acercade')->name('acercade');
 
 
 Route::middleware([NotLogin::class])->group(function () {
@@ -87,6 +89,7 @@ Route::prefix('/admin')->middleware([AuthAdmin::class])->group(function () {
 
     //Ventas
     Route::get('/ventas', [AdminVentasController::class, 'index'])->name('admin.ventas');
+    Route::post('/ventas', [AdminVentasController::class, 'create'])->name('admin.ventas.post');
 
     //Proyectos
     Route::get('/proyectos', [AdminProyectosController::class, 'index'])->name('admin.proyectos');

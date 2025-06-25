@@ -204,60 +204,6 @@
                 </script>
             @endif
 
-            <!-- Search Section -->
-            <div class="search-container p-4 sm:p-6 md:p-8 rounded-2xl mb-8 sm:mb-12">
-                <div class="flex items-center mb-6">
-                    <span class="text-2xl sm:text-3xl mr-3 sm:mr-4">🔍</span>
-                    <h3 class="text-xl sm:text-2xl font-bold text-white">Buscar Paquetes</h3>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-                    <div>
-                        <label for="search-id" class="block text-sm font-medium text-gray-300 mb-2">ID Paquete:</label>
-                        <input type="text" id="search-id" placeholder="Buscar por ID..."
-                            class="w-full px-3 sm:px-4 py-2 sm:py-3 bg-slate-700/50 border border-gray-500/50 rounded-xl text-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-300 text-sm sm:text-base">
-                    </div>
-
-                    <div>
-                        <label for="search-status" class="block text-sm font-medium text-gray-300 mb-2">Estado:</label>
-                        <select id="search-status"
-                            class="w-full px-3 sm:px-4 py-2 sm:py-3 bg-slate-700/50 border border-gray-500/50 rounded-xl text-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-300 text-sm sm:text-base">
-                            <option value="">Todos</option>
-                            <option value="disponible">Disponible</option>
-                            <option value="vendido">Vendido</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label for="search-peso" class="block text-sm font-medium text-gray-300 mb-2">Peso (kg):</label>
-                        <input type="number" id="search-peso" placeholder="Peso mínimo..." step="0.01"
-                            min="0"
-                            class="w-full px-3 sm:px-4 py-2 sm:py-3 bg-slate-700/50 border border-gray-500/50 rounded-xl text-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-300 text-sm sm:text-base">
-                    </div>
-
-                    <div>
-                        <label for="search-venta" class="block text-sm font-medium text-gray-300 mb-2">ID Venta:</label>
-                        <input type="text" id="search-venta" placeholder="Buscar por ID venta..."
-                            class="w-full px-3 sm:px-4 py-2 sm:py-3 bg-slate-700/50 border border-gray-500/50 rounded-xl text-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-300 text-sm sm:text-base">
-                    </div>
-                </div>
-
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <div class="flex-1">
-                        <label for="search-descripcion"
-                            class="block text-sm font-medium text-gray-300 mb-2">Descripción:</label>
-                        <input type="text" id="search-descripcion" placeholder="Buscar en descripción..."
-                            class="w-full px-3 sm:px-4 py-2 sm:py-3 bg-slate-700/50 border border-gray-500/50 rounded-xl text-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-300 text-sm sm:text-base">
-                    </div>
-                    <div class="flex items-end">
-                        <button type="button" onclick="limpiarBusqueda()"
-                            class="bg-gray-600 hover:bg-gray-700 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-medium transition-all duration-300 text-sm sm:text-base">
-                            🗑️ Limpiar
-                        </button>
-                    </div>
-                </div>
-            </div>
-
             <!-- Add New Package Section -->
             <div class="section-card p-4 sm:p-6 md:p-8 rounded-2xl mb-8 sm:mb-12">
                 <div class="flex items-center mb-6 sm:mb-8">
@@ -313,6 +259,61 @@
                 </form>
             </div>
 
+            <!-- Search Section -->
+            <div class="search-container p-4 sm:p-6 md:p-8 rounded-2xl mb-8 sm:mb-12">
+                <div class="flex items-center mb-6">
+                    <span class="text-2xl sm:text-3xl mr-3 sm:mr-4">🔍</span>
+                    <h3 class="text-xl sm:text-2xl font-bold text-white">Buscar Paquetes</h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                    <div>
+                        <label for="search-id" class="block text-sm font-medium text-gray-300 mb-2">ID Paquete:</label>
+                        <input type="text" id="search-id" placeholder="Buscar por ID..."
+                            class="w-full px-3 sm:px-4 py-2 sm:py-3 bg-slate-700/50 border border-gray-500/50 rounded-xl text-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-300 text-sm sm:text-base">
+                    </div>
+
+                    <div>
+                        <label for="search-status" class="block text-sm font-medium text-gray-300 mb-2">Estado:</label>
+                        <select id="search-status"
+                            class="w-full px-3 sm:px-4 py-2 sm:py-3 bg-slate-700/50 border border-gray-500/50 rounded-xl text-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-300 text-sm sm:text-base">
+                            <option value="">Todos</option>
+                            <option value="disponible">Disponible</option>
+                            <option value="vendido">Vendido</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="search-peso" class="block text-sm font-medium text-gray-300 mb-2">Peso (kg):</label>
+                        <input type="number" id="search-peso" placeholder="Peso mínimo..." step="0.01"
+                            min="0"
+                            class="w-full px-3 sm:px-4 py-2 sm:py-3 bg-slate-700/50 border border-gray-500/50 rounded-xl text-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-300 text-sm sm:text-base">
+                    </div>
+
+                    <div>
+                        <label for="search-venta" class="block text-sm font-medium text-gray-300 mb-2">ID Venta:</label>
+                        <input type="text" id="search-venta" placeholder="Buscar por ID venta..."
+                            class="w-full px-3 sm:px-4 py-2 sm:py-3 bg-slate-700/50 border border-gray-500/50 rounded-xl text-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-300 text-sm sm:text-base">
+                    </div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <div class="flex-1">
+                        <label for="search-descripcion"
+                            class="block text-sm font-medium text-gray-300 mb-2">Descripción:</label>
+                        <input type="text" id="search-descripcion" placeholder="Buscar en descripción..."
+                            class="w-full px-3 sm:px-4 py-2 sm:py-3 bg-slate-700/50 border border-gray-500/50 rounded-xl text-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-300 text-sm sm:text-base">
+                    </div>
+                    <div class="flex items-end">
+                        <button type="button" onclick="limpiarBusqueda()"
+                            class="bg-gray-600 hover:bg-gray-700 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-medium transition-all duration-300 text-sm sm:text-base">
+                            🗑️ Limpiar
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+
             @if (!empty($paquetes))
                 <!-- Results Counter -->
                 <div class="mb-6">
@@ -323,306 +324,295 @@
                 </div>
 
                 <!-- Packages Grid -->
-                <div class="grid gap-6 sm:gap-8 mb-8 sm:mb-12" id="packages-container">
+                <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 mb-8 sm:mb-12"
+                    id="packages-container">
                     @foreach ($paquetes as $paquete)
-                        <div class="paquete-card p-4 sm:p-6 md:p-8 rounded-2xl"
+                        <div class="paquete-card p-4 sm:p-6 rounded-2xl transform transition-all duration-300 hover:scale-105"
                             data-package-id="{{ $paquete['id_paquete'] }}"
                             data-package-status="{{ !empty($paquete['id_venta']) ? 'vendido' : 'disponible' }}"
                             data-package-peso="{{ $paquete['peso_total'] }}"
                             data-package-venta="{{ $paquete['id_venta'] ?? '' }}"
                             data-package-descripcion="{{ strtolower($paquete['descripcion'] ?? '') }}">
-                            <!-- Package Header -->
-                            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4 sm:mb-6">
-                                <div class="flex flex-col sm:flex-row sm:items-center sm:space-x-4 mb-4 lg:mb-0">
-                                    <div
-                                        class="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-bold mb-2 sm:mb-0 w-fit">
-                                        ID: {{ $paquete['id_paquete'] }}
-                                    </div>
-                                    @if (!empty($paquete['id_venta']))
-                                        <span class="status-badge status-vendido w-fit">Vendido</span>
-                                    @else
-                                        <span class="status-badge status-disponible w-fit">Disponible</span>
-                                    @endif
-                                </div>
-                            </div>
 
-                            <!-- Package Details -->
-                            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mb-4 sm:mb-6">
-                                <div class="bg-slate-800/50 p-3 sm:p-4 rounded-xl border border-gray-600/30">
-                                    <p class="text-gray-400 text-xs sm:text-sm font-medium mb-1">Peso Total</p>
-                                    <p class="text-white font-semibold text-sm sm:text-base">
-                                        {{ $paquete['peso_total'] }} kg</p>
-                                </div>
-                                <div class="bg-slate-800/50 p-3 sm:p-4 rounded-xl border border-gray-600/30">
-                                    <p class="text-gray-400 text-xs sm:text-sm font-medium mb-1">Fecha de Creación</p>
-                                    <p class="text-white font-semibold text-sm sm:text-base">
-                                        {{ $paquete['fecha_creacion'] }}
-                                    </p>
+                            <!-- Package Header -->
+                            <div class="flex items-center justify-between mb-4">
+                                <div
+                                    class="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                                    ID: {{ $paquete['id_paquete'] }}
                                 </div>
                                 @if (!empty($paquete['id_venta']))
-                                    <div class="bg-slate-800/50 p-3 sm:p-4 rounded-xl border border-gray-600/30">
-                                        <p class="text-gray-400 text-xs sm:text-sm font-medium mb-1">ID Venta</p>
-                                        <p class="text-white font-semibold text-sm sm:text-base">
-                                            {{ $paquete['id_venta'] }}</p>
+                                    <span class="status-badge status-vendido">Vendido</span>
+                                @else
+                                    <span class="status-badge status-disponible">Disponible</span>
+                                @endif
+                            </div>
+
+                            <!-- Package Details Card -->
+                            <div class="bg-slate-800/50 p-4 rounded-xl border border-gray-600/30 mb-4">
+                                <div class="grid grid-cols-2 gap-4 text-center">
+                                    <div>
+                                        <p class="text-gray-400 text-xs font-medium mb-1">Peso Total</p>
+                                        <p class="text-white font-bold text-lg">{{ $paquete['peso_total'] }} kg</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-400 text-xs font-medium mb-1">Fecha</p>
+                                        <p class="text-white font-semibold text-sm">
+                                            {{ date('d/m/Y', strtotime($paquete['fecha_creacion'])) }}</p>
+                                    </div>
+                                </div>
+                                @if (!empty($paquete['id_venta']))
+                                    <div class="mt-3 pt-3 border-t border-gray-600/30 text-center">
+                                        <p class="text-gray-400 text-xs font-medium mb-1">ID Venta</p>
+                                        <p class="text-yellow-400 font-bold">{{ $paquete['id_venta'] }}</p>
                                     </div>
                                 @endif
                             </div>
 
+                            <!-- Description -->
                             @if (!empty($paquete['descripcion']))
-                                <p class="text-gray-300 leading-relaxed mb-6 sm:mb-8 text-sm sm:text-base">
-                                    {{ $paquete['descripcion'] }}</p>
+                                <div class="bg-slate-800/30 p-3 rounded-lg border border-gray-600/20 mb-4">
+                                    <p class="text-gray-300 text-sm leading-relaxed">{{ $paquete['descripcion'] }}</p>
+                                </div>
                             @endif
 
+                            <!-- Devices Count -->
                             @if (!empty($paquete['inventarios']))
-                                <div class="mb-6 sm:mb-8">
-                                    <h4 class="text-lg sm:text-xl font-bold text-white mb-4 flex items-center">
-                                        <span class="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
-                                        Dispositivos en el Paquete
-                                    </h4>
-                                    <div class="grid gap-4">
-                                        @foreach ($paquete['inventarios'] as $inventario)
-                                            <div
-                                                class="bg-slate-800/30 p-3 sm:p-4 rounded-xl border border-gray-600/30">
-                                                <div
-                                                    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-                                                    <div>
-                                                        <p class="text-gray-400 text-xs font-medium mb-1">Inventario ID
-                                                        </p>
-                                                        <p class="text-white font-semibold text-sm">
-                                                            {{ $inventario['id_inventario'] }}
-                                                        </p>
-                                                    </div>
-                                                    <div>
-                                                        <p class="text-gray-400 text-xs font-medium mb-1">Producto</p>
-                                                        <p class="text-white font-semibold text-sm">
-                                                            {{ $inventario['dispositivo']['nombre_dispositivo'] }}</p>
-                                                    </div>
-                                                    <div>
-                                                        <p class="text-gray-400 text-xs font-medium mb-1">Marca/Modelo
-                                                        </p>
-                                                        <p class="text-white font-semibold text-sm">
-                                                            {{ $inventario['dispositivo']['marca'] }}
-                                                            {{ $inventario['dispositivo']['modelo'] }}</p>
-                                                    </div>
-                                                    <div>
-                                                        <p class="text-gray-400 text-xs font-medium mb-1">Estado</p>
-                                                        <p class="text-white font-semibold text-sm">
-                                                            {{ $inventario['dispositivo']['estado_fisico'] }}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="mt-2">
-                                                    <p class="text-gray-400 text-xs font-medium mb-1">Fecha de Ingreso
-                                                    </p>
-                                                    <p class="text-gray-300 text-xs sm:text-sm">
-                                                        {{ $inventario['fecha_ingreso'] }}</p>
-                                                </div>
-                                            </div>
-                                        @endforeach
+                                <div class="flex items-center justify-center mb-4">
+                                    <div
+                                        class="bg-blue-500/20 text-blue-400 px-3 py-2 rounded-lg border border-blue-500/30">
+                                        <span class="text-sm font-medium">📱 {{ count($paquete['inventarios']) }}
+                                            Dispositivos</span>
                                     </div>
+                                </div>
+
+                                <!-- Devices Preview (First 2) -->
+                                <div class="space-y-2 mb-4">
+                                    @foreach (array_slice($paquete['inventarios'], 0, 2) as $inventario)
+                                        <div class="bg-slate-800/30 p-3 rounded-lg border border-gray-600/20">
+                                            <div class="flex justify-between items-start">
+                                                <div class="flex-1">
+                                                    <p class="text-white font-medium text-sm">
+                                                        {{ $inventario['dispositivo']['nombre_dispositivo'] }}</p>
+                                                    <p class="text-gray-400 text-xs">
+                                                        {{ $inventario['dispositivo']['marca'] }}
+                                                        {{ $inventario['dispositivo']['modelo'] }}</p>
+                                                </div>
+                                                <span class="text-xs text-blue-400 bg-blue-500/20 px-2 py-1 rounded">
+                                                    #{{ $inventario['id_inventario'] }}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    @endforeach
+
+                                    @if (count($paquete['inventarios']) > 2)
+                                        <div class="text-center">
+                                            <span
+                                                class="text-gray-400 text-xs">+{{ count($paquete['inventarios']) - 2 }}
+                                                dispositivos más</span>
+                                        </div>
+                                    @endif
                                 </div>
                             @endif
 
                             <!-- Action Buttons -->
-                            <div
-                                class="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 pt-4 sm:pt-6 border-t border-gray-600/30">
-                                <button type="button"
-                                    class="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-6 sm:px-8 py-2 sm:py-3 rounded-xl font-medium hover:from-blue-600 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg text-sm sm:text-base"
-                                    onclick="abrirModalEdicion('{{ $paquete['id_paquete'] }}')">
-                                    ✏️ Actualizar Paquete
-                                </button>
-
-                                <!-- Botón de eliminación con alerta estilizada -->
-                                <form action="{{ route('admin.paquetes.delete') }}" method="POST"
-                                    style="display: inline;" class="w-full sm:w-auto">
-                                    @csrf
-                                    @method('DELETE')
-                                    <input type="hidden" name="id_paquete" value="{{ $paquete['id_paquete'] }}">
-                                    <button type="submit"
-                                        class="w-full sm:w-auto bg-gradient-to-r from-red-500 to-red-600 text-white px-6 sm:px-8 py-2 sm:py-3 rounded-xl font-medium hover:from-red-600 hover:to-red-700 transition-all duration-300 transform hover:scale-105 shadow-lg text-sm sm:text-base"
-                                        onclick="return mostrarAlertaEliminacion(event, '{{ $paquete['id_paquete'] }}')">
-                                        🗑️ Eliminar Paquete
+                            @if ($paquete['id_venta'] == null)
+                                <div class="flex flex-col gap-2 pt-4 border-t border-gray-600/30">
+                                    <button type="button"
+                                        class="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:from-blue-600 hover:to-blue-700 transition-all duration-300 text-sm"
+                                        onclick="abrirModalEdicion('{{ $paquete['id_paquete'] }}')">
+                                        ✏️ Editar
                                     </button>
-                                </form>
 
-                                <!-- Modal de confirmación de eliminación personalizado -->
-                                <div id="deleteModal"
-                                    class="hidden fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-                                    <div
-                                        class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl shadow-2xl border border-red-500/30 max-w-md w-full mx-4 transform transition-all duration-300 scale-95">
-                                        <!-- Header -->
-                                        <div class="flex items-center justify-center p-6 pb-4">
-                                            <div
-                                                class="w-16 h-16 bg-red-500/20 rounded-full flex items-center justify-center mb-4">
-                                                <svg class="w-8 h-8 text-red-400" fill="none"
-                                                    stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2"
-                                                        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z">
-                                                    </path>
-                                                </svg>
-                                            </div>
-                                        </div>
+                                    <form action="{{ route('admin.paquetes.delete') }}" method="POST"
+                                        class="w-full">
+                                        @csrf
+                                        @method('DELETE')
+                                        <input type="hidden" name="id_paquete"
+                                            value="{{ $paquete['id_paquete'] }}">
+                                        <button type="submit"
+                                            class="w-full bg-gradient-to-r from-red-500 to-red-600 text-white px-4 py-2 rounded-lg font-medium hover:from-red-600 hover:to-red-700 transition-all duration-300 text-sm"
+                                            onclick="return mostrarAlertaEliminacion(event, '{{ $paquete['id_paquete'] }}')">
+                                            🗑️ Eliminar
+                                        </button>
+                                    </form>
+                                </div>
+                            @endif
 
-                                        <!-- Content -->
-                                        <div class="px-6 pb-6 text-center">
-                                            <h3 class="text-xl font-bold text-white mb-2">¿Eliminar Paquete?</h3>
-                                            <p class="text-gray-300 mb-6">Esta acción no se puede deshacer. El paquete
-                                                será eliminado permanentemente del sistema.</p>
-
-                                            <!-- Buttons -->
-                                            <div class="flex flex-col sm:flex-row gap-3 justify-center">
-                                                <button onclick="cerrarAlertaEliminacion()"
-                                                    class="px-6 py-3 bg-gray-600 hover:bg-gray-700 text-white rounded-xl font-medium transition-all duration-300 transform hover:scale-105">
-                                                    ❌ Cancelar
-                                                </button>
-                                                <button onclick="confirmarEliminacion()"
-                                                    class="px-6 py-3 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-xl font-medium transition-all duration-300 transform hover:scale-105 shadow-lg">
-                                                    🗑️ Sí, Eliminar
-                                                </button>
-                                            </div>
+                            <!-- Modal de confirmación de eliminación personalizado -->
+                            <div id="deleteModal"
+                                class="hidden fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+                                <div
+                                    class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl shadow-2xl border border-red-500/30 max-w-md w-full mx-4 transform transition-all duration-300 scale-95">
+                                    <!-- Header -->
+                                    <div class="flex items-center justify-center p-6 pb-4">
+                                        <div
+                                            class="w-16 h-16 bg-red-500/20 rounded-full flex items-center justify-center mb-4">
+                                            <svg class="w-8 h-8 text-red-400" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z">
+                                                </path>
+                                            </svg>
                                         </div>
                                     </div>
-                                </div>
 
-                                <!-- Modal de edición -->
-                                <div id="modal-{{ $paquete['id_paquete'] }}" class="modal">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <span class="close"
-                                                onclick="cerrarModal('{{ $paquete['id_paquete'] }}')">&times;</span>
-                                            <h3 class="text-xl sm:text-2xl font-bold text-white">✏️ Editar Paquete</h3>
-                                            <p class="text-gray-400 text-sm mt-2">Modifica los datos del paquete y sus
-                                                dispositivos</p>
-                                        </div>
+                                    <!-- Content -->
+                                    <div class="px-6 pb-6 text-center">
+                                        <h3 class="text-xl font-bold text-white mb-2">¿Eliminar Paquete?</h3>
+                                        <p class="text-gray-300 mb-6">Esta acción no se puede deshacer. El paquete
+                                            será eliminado permanentemente del sistema.</p>
 
-                                        <div class="modal-body">
-                                            <form action="{{ route('admin.paquetes.put') }}" method="POST"
-                                                class="space-y-6">
-                                                @csrf
-                                                @method('PUT')
-                                                <input type="hidden" name="id_paquete"
-                                                    value="{{ $paquete['id_paquete'] }}">
-
-                                                <!-- Información básica -->
-                                                <div class="bg-slate-800/40 p-6 rounded-xl border border-gray-600/30">
-                                                    <h4
-                                                        class="text-lg font-semibold text-white mb-4 flex items-center">
-                                                        📦 Información del Paquete
-                                                    </h4>
-
-                                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                                        <div>
-                                                            <label for="peso_total_{{ $paquete['id_paquete'] }}"
-                                                                class="block text-sm font-medium text-gray-300 mb-2">Peso
-                                                                Total (kg):</label>
-                                                            <input type="number" name="peso_total"
-                                                                id="peso_total_{{ $paquete['id_paquete'] }}"
-                                                                value="{{ $paquete['peso_total'] }}" step="0.01"
-                                                                min="0"
-                                                                class="w-full px-4 py-3 bg-slate-700/50 border border-gray-500/50 rounded-xl text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300">
-                                                        </div>
-
-                                                        <div>
-                                                            <label for="id_venta_{{ $paquete['id_paquete'] }}"
-                                                                class="block text-sm font-medium text-gray-300 mb-2">ID
-                                                                Venta:</label>
-                                                            <input type="number" name="id_venta"
-                                                                id="id_venta_{{ $paquete['id_paquete'] }}"
-                                                                value="{{ $paquete['id_venta'] ?? '' }}"
-                                                                class="w-full px-4 py-3 bg-slate-700/50 border border-gray-500/50 rounded-xl text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300">
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="mt-6">
-                                                        <label for="descripcion_{{ $paquete['id_paquete'] }}"
-                                                            class="block text-sm font-medium text-gray-300 mb-2">Descripción:</label>
-                                                        <textarea name="descripcion" id="descripcion_{{ $paquete['id_paquete'] }}" rows="3"
-                                                            class="w-full px-4 py-3 bg-slate-700/50 border border-gray-500/50 rounded-xl text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-vertical"
-                                                            placeholder="Descripción del paquete...">{{ $paquete['descripcion'] ?? '' }}</textarea>
-                                                    </div>
-                                                </div>
-
-                                                <!-- Sección de inventarios existentes -->
-                                                <div class="bg-slate-800/40 p-6 rounded-xl border border-gray-600/30">
-                                                    <h4
-                                                        class="text-lg font-semibold text-white mb-4 flex items-center">
-                                                        📱 Dispositivos del Inventario
-                                                    </h4>
-
-                                                    <div id="inventarios-existentes-{{ $paquete['id_paquete'] }}"
-                                                        class="space-y-3">
-                                                        @if (!empty($paquete['inventarios']))
-                                                            @foreach ($paquete['inventarios'] as $inventario)
-                                                                <div class="inventario-item bg-slate-700/30 p-4 rounded-lg border border-gray-600/20"
-                                                                    id="inventario-existente-{{ $inventario['id_inventario'] }}">
-                                                                    <input type="hidden"
-                                                                        name="inventarios_existentes[{{ $loop->index }}][id_inventario]"
-                                                                        value="{{ $inventario['id_inventario'] }}">
-                                                                    <div
-                                                                        class="flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-3 sm:space-y-0">
-                                                                        <div class="flex-1">
-                                                                            <p class="text-white font-medium">
-                                                                                {{ $inventario['dispositivo']['nombre_dispositivo'] }}
-                                                                            </p>
-                                                                            <p class="text-gray-400 text-sm">
-                                                                                {{ $inventario['dispositivo']['marca'] }}
-                                                                                {{ $inventario['dispositivo']['modelo'] }}
-                                                                            </p>
-                                                                            <span
-                                                                                class="text-xs text-blue-400 bg-blue-500/20 px-2 py-1 rounded-full mt-1 inline-block">
-                                                                                ID: {{ $inventario['id_inventario'] }}
-                                                                            </span>
-                                                                        </div>
-                                                                        <button type="button"
-                                                                            class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center space-x-2"
-                                                                            onclick="marcarInventarioParaEliminar('{{ $inventario['id_inventario'] }}', '{{ $paquete['id_paquete'] }}')">
-                                                                            <span>🗑️</span>
-                                                                            <span
-                                                                                class="hidden sm:inline">Eliminar</span>
-                                                                        </button>
-                                                                    </div>
-                                                                </div>
-                                                            @endforeach
-                                                        @endif
-                                                    </div>
-
-                                                    <!-- Campo oculto para inventarios a eliminar -->
-                                                    <input type="hidden" name="eliminar_inventarios"
-                                                        id="eliminar-inventarios-{{ $paquete['id_paquete'] }}"
-                                                        value="">
-
-                                                    <!-- Nuevos inventarios -->
-                                                    <div id="nuevos-inventarios-{{ $paquete['id_paquete'] }}"
-                                                        class="mt-4"></div>
-
-                                                    <div class="mt-4 pt-4 border-t border-gray-600/30">
-                                                        <button type="button"
-                                                            class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 flex items-center space-x-2"
-                                                            onclick="agregarCampoInventarioModal('{{ $paquete['id_paquete'] }}')">
-                                                            <span>➕</span>
-                                                            <span>Agregar dispositivo</span>
-                                                        </button>
-                                                    </div>
-                                                </div>
-
-                                                <!-- Botones de acción -->
-                                                <div
-                                                    class="flex flex-col sm:flex-row justify-end space-y-3 sm:space-y-0 sm:space-x-4 pt-6 border-t border-gray-600/30">
-                                                    <button type="button"
-                                                        onclick="cerrarModal('{{ $paquete['id_paquete'] }}')"
-                                                        class="bg-gray-600 hover:bg-gray-700 text-white px-8 py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105">
-                                                        ❌ Cancelar
-                                                    </button>
-                                                    <button type="submit"
-                                                        class="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-8 py-3 rounded-xl font-medium hover:from-blue-600 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg">
-                                                        💾 Guardar Cambios
-                                                    </button>
-                                                </div>
-                                            </form>
+                                        <!-- Buttons -->
+                                        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                                            <button onclick="cerrarAlertaEliminacion()"
+                                                class="px-6 py-3 bg-gray-600 hover:bg-gray-700 text-white rounded-xl font-medium transition-all duration-300 transform hover:scale-105">
+                                                ❌ Cancelar
+                                            </button>
+                                            <button onclick="confirmarEliminacion()"
+                                                class="px-6 py-3 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-xl font-medium transition-all duration-300 transform hover:scale-105 shadow-lg">
+                                                🗑️ Sí, Eliminar
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- Modal de edición -->
+                            <div id="modal-{{ $paquete['id_paquete'] }}" class="modal fixed inset-0 w-full h-full">
+                                <div class="modal-content w-full h-full">
+                                    <div class="modal-header">
+                                        <span class="close"
+                                            onclick="cerrarModal('{{ $paquete['id_paquete'] }}')">&times;</span>
+                                        <h3 class="text-xl sm:text-2xl font-bold text-white">✏️ Editar Paquete</h3>
+                                        <p class="text-gray-400 text-sm mt-2">Modifica los datos del paquete y sus
+                                            dispositivos</p>
+                                    </div>
+
+                                    <div class="modal-body">
+                                        <form action="{{ route('admin.paquetes.put') }}" method="POST"
+                                            class="space-y-6">
+                                            @csrf
+                                            @method('PUT')
+                                            <input type="hidden" name="id_paquete"
+                                                value="{{ $paquete['id_paquete'] }}">
+
+                                            <!-- Información básica -->
+                                            <div class="bg-slate-800/40 p-6 rounded-xl border border-gray-600/30">
+                                                <h4 class="text-lg font-semibold text-white mb-4 flex items-center">
+                                                    📦 Información del Paquete
+                                                </h4>
+
+                                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                                    <div>
+                                                        <label for="peso_total_{{ $paquete['id_paquete'] }}"
+                                                            class="block text-sm font-medium text-gray-300 mb-2">Peso
+                                                            Total (kg):</label>
+                                                        <input type="number" name="peso_total"
+                                                            id="peso_total_{{ $paquete['id_paquete'] }}"
+                                                            value="{{ $paquete['peso_total'] }}" step="0.01"
+                                                            min="0"
+                                                            class="w-full px-4 py-3 bg-slate-700/50 border border-gray-500/50 rounded-xl text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300">
+                                                    </div>
+
+                                                    <div>
+                                                        <label for="id_venta_{{ $paquete['id_paquete'] }}"
+                                                            class="block text-sm font-medium text-gray-300 mb-2">ID
+                                                            Venta:</label>
+                                                        <input type="number" name="id_venta"
+                                                            id="id_venta_{{ $paquete['id_paquete'] }}"
+                                                            value="{{ $paquete['id_venta'] ?? '' }}"
+                                                            class="w-full px-4 py-3 bg-slate-700/50 border border-gray-500/50 rounded-xl text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300">
+                                                    </div>
+                                                </div>
+
+                                                <div class="mt-6">
+                                                    <label for="descripcion_{{ $paquete['id_paquete'] }}"
+                                                        class="block text-sm font-medium text-gray-300 mb-2">Descripción:</label>
+                                                    <textarea name="descripcion" id="descripcion_{{ $paquete['id_paquete'] }}" rows="3"
+                                                        class="w-full px-4 py-3 bg-slate-700/50 border border-gray-500/50 rounded-xl text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-vertical"
+                                                        placeholder="Descripción del paquete...">{{ $paquete['descripcion'] ?? '' }}</textarea>
+                                                </div>
+                                            </div>
+
+                                            <!-- Sección de inventarios existentes -->
+                                            <div class="bg-slate-800/40 p-6 rounded-xl border border-gray-600/30">
+                                                <h4 class="text-lg font-semibold text-white mb-4 flex items-center">
+                                                    📱 Dispositivos del Inventario
+                                                </h4>
+
+                                                <div id="inventarios-existentes-{{ $paquete['id_paquete'] }}"
+                                                    class="space-y-3">
+                                                    @if (!empty($paquete['inventarios']))
+                                                        @foreach ($paquete['inventarios'] as $inventario)
+                                                            <div class="inventario-item bg-slate-700/30 p-4 rounded-lg border border-gray-600/20"
+                                                                id="inventario-existente-{{ $inventario['id_inventario'] }}">
+                                                                <input type="hidden"
+                                                                    name="inventarios_existentes[{{ $loop->index }}][id_inventario]"
+                                                                    value="{{ $inventario['id_inventario'] }}">
+                                                                <div
+                                                                    class="flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-3 sm:space-y-0">
+                                                                    <div class="flex-1">
+                                                                        <p class="text-white font-medium">
+                                                                            {{ $inventario['dispositivo']['nombre_dispositivo'] }}
+                                                                        </p>
+                                                                        <p class="text-gray-400 text-sm">
+                                                                            {{ $inventario['dispositivo']['marca'] }}
+                                                                            {{ $inventario['dispositivo']['modelo'] }}
+                                                                        </p>
+                                                                        <span
+                                                                            class="text-xs text-blue-400 bg-blue-500/20 px-2 py-1 rounded-full mt-1 inline-block">
+                                                                            ID: {{ $inventario['id_inventario'] }}
+                                                                        </span>
+                                                                    </div>
+                                                                    <button type="button"
+                                                                        class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center space-x-2"
+                                                                        onclick="marcarInventarioParaEliminar('{{ $inventario['id_inventario'] }}', '{{ $paquete['id_paquete'] }}')">
+                                                                        <span>🗑️</span>
+                                                                        <span class="hidden sm:inline">Eliminar</span>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        @endforeach
+                                                    @endif
+                                                </div>
+
+                                                <!-- Campo oculto para inventarios a eliminar -->
+                                                <input type="hidden" name="eliminar_inventarios"
+                                                    id="eliminar-inventarios-{{ $paquete['id_paquete'] }}"
+                                                    value="">
+
+                                                <!-- Nuevos inventarios -->
+                                                <div id="nuevos-inventarios-{{ $paquete['id_paquete'] }}"
+                                                    class="mt-4"></div>
+
+                                                <div class="mt-4 pt-4 border-t border-gray-600/30">
+                                                    <button type="button"
+                                                        class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 flex items-center space-x-2"
+                                                        onclick="agregarCampoInventarioModal('{{ $paquete['id_paquete'] }}')">
+                                                        <span>➕</span>
+                                                        <span>Agregar dispositivo</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <!-- Botones de acción -->
+                                            <div
+                                                class="flex flex-col sm:flex-row justify-end space-y-3 sm:space-y-0 sm:space-x-4 pt-6 border-t border-gray-600/30">
+                                                <button type="button"
+                                                    onclick="cerrarModal('{{ $paquete['id_paquete'] }}')"
+                                                    class="bg-gray-600 hover:bg-gray-700 text-white px-8 py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105">
+                                                    ❌ Cancelar
+                                                </button>
+                                                <button type="submit"
+                                                    class="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-8 py-3 rounded-xl font-medium hover:from-blue-600 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                                                    💾 Guardar Cambios
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     @endforeach
                 </div>
             @else

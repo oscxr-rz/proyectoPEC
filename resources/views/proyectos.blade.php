@@ -330,7 +330,7 @@
                 class="w-20 sm:w-40 h-1 sm:h-2 mx-auto mb-5 sm:mb-10 rounded-full shadow-lg">
             </div>
             <p class="text-sm sm:text-xl text-white max-w-4xl mx-auto leading-relaxed font-medium px-4">
-                Descubre los proyectos desarrollados por nuestros estudiantes
+                Descubre los proyectos diseñados por los docentes del CBTis No. 150 y desarrollados por los estudiantes, alineados con el PEC 2024/2.
             </p>
         </div>
 
@@ -357,7 +357,11 @@
                                     <div class="flex flex-wrap gap-2 sm:gap-4 mb-4 sm:mb-8">
                                         <span
                                             class="bg-gradient-to-r from-green-700 to-green-800 text-white px-3 py-1 sm:px-5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
-                                            🏫 Grupo: {{ $trabajo['grupo'] }}
+                                            🏫 Grupo: {{ $trabajo['semestre'] }}o. "{{ $trabajo['grupo'] }}"
+                                        </span>
+                                        <span
+                                            class="bg-gradient-to-r from-green-700 to-green-800 text-white px-3 py-1 sm:px-5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
+                                            🧑‍🏫 Docente: {{ $trabajo['nombre_docente'] }}
                                         </span>
                                         <span
                                             class="bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-3 py-1 sm:px-5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
@@ -464,7 +468,11 @@
                                     <div class="flex flex-wrap gap-2 sm:gap-4 mb-4 sm:mb-8">
                                         <span
                                             class="bg-gradient-to-r from-green-700 to-green-800 text-white px-3 py-1 sm:px-5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
-                                            🏫 Grupo: {{ $trabajo['grupo'] }}
+                                            🏫 Grupo: {{ $trabajo['semestre'] }}o. "{{ $trabajo['grupo'] }}"
+                                        </span>
+                                        <span
+                                            class="bg-gradient-to-r from-green-700 to-green-800 text-white px-3 py-1 sm:px-5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
+                                            🧑‍🏫 Docente: {{ $trabajo['nombre_docente'] }}
                                         </span>
                                         <span
                                             class="bg-gradient-to-r from-emerald-500 to-green-500 text-white px-3 py-1 sm:px-5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
@@ -571,7 +579,11 @@
                                     <div class="flex flex-wrap gap-2 sm:gap-4 mb-4 sm:mb-8">
                                         <span
                                             class="bg-gradient-to-r from-green-700 to-green-800 text-white px-3 py-1 sm:px-5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
-                                            🏫 Grupo: {{ $trabajo['grupo'] }}
+                                            🏫 Grupo: {{ $trabajo['semestre'] }}o. "{{ $trabajo['grupo'] }}"
+                                        </span>
+                                        <span
+                                            class="bg-gradient-to-r from-green-700 to-green-800 text-white px-3 py-1 sm:px-5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
+                                            🧑‍🏫 Docente: {{ $trabajo['nombre_docente'] }}
                                         </span>
                                         <span
                                             class="bg-gradient-to-r from-teal-500 to-emerald-500 text-white px-3 py-1 sm:px-5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
@@ -678,7 +690,11 @@
                                     <div class="flex flex-wrap gap-2 sm:gap-4 mb-4 sm:mb-8">
                                         <span
                                             class="bg-gradient-to-r from-green-700 to-green-800 text-white px-3 py-1 sm:px-5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
-                                            🏫 Grupo: {{ $trabajo['grupo'] }}
+                                            🏫 Grupo: {{ $trabajo['semestre'] }}o. "{{ $trabajo['grupo'] }}"
+                                        </span>
+                                        <span
+                                            class="bg-gradient-to-r from-green-700 to-green-800 text-white px-3 py-1 sm:px-5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
+                                            🧑‍🏫 Docente: {{ $trabajo['nombre_docente'] }}
                                         </span>
                                         <span
                                             class="bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-3 py-1 sm:px-5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
@@ -785,7 +801,11 @@
                                     <div class="flex flex-wrap gap-2 sm:gap-4 mb-4 sm:mb-8">
                                         <span
                                             class="bg-gradient-to-r from-green-700 to-green-800 text-white px-3 py-1 sm:px-5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
-                                            🏫 Grupo: {{ $trabajo['grupo'] }}
+                                            🏫 Grupo: {{ $trabajo['semestre'] }}o. "{{ $trabajo['grupo'] }}"
+                                        </span>
+                                        <span
+                                            class="bg-gradient-to-r from-green-700 to-green-800 text-white px-3 py-1 sm:px-5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
+                                            🧑‍🏫 Docente: {{ $trabajo['nombre_docente'] }}
                                         </span>
                                         <span
                                             class="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-3 py-1 sm:px-5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
@@ -892,7 +912,11 @@
                                     <div class="flex flex-wrap gap-2 sm:gap-4 mb-4 sm:mb-8">
                                         <span
                                             class="bg-gradient-to-r from-green-700 to-green-800 text-white px-3 py-1 sm:px-5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
-                                            🏫 Grupo: {{ $trabajo['grupo'] }}
+                                            🏫 Grupo: {{ $trabajo['semestre'] }}o. "{{ $trabajo['grupo'] }}"
+                                        </span>
+                                        <span
+                                            class="bg-gradient-to-r from-green-700 to-green-800 text-white px-3 py-1 sm:px-5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
+                                            🧑‍🏫 Docente: {{ $trabajo['nombre_docente'] }}
                                         </span>
                                         <span
                                             class="bg-gradient-to-r from-purple-500 to-blue-500 text-white px-3 py-1 sm:px-5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
