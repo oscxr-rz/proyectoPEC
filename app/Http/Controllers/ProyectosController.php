@@ -9,7 +9,7 @@ class ProyectosController extends Controller
 {
     public function index()
     {
-        $trabajos = Galeria::with('enlaces', 'imagenes')->get();
+        $trabajos = Galeria::with('enlaces', 'imagenes')->get()->sortBy('grupo');
 
         $primero = [];
         $segundo = [];

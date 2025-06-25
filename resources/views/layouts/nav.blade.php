@@ -34,23 +34,48 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('galeria') }}"
+                        <a href="{{ route('pec') }}"
                             class="px-4 py-2 text-green-100 hover:text-white hover:bg-gradient-to-r hover:from-emerald-600 hover:to-emerald-700 rounded-lg transition-all duration-200 font-medium hover:shadow-md">
-                            Galería
+                            PEC
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('proyectos') }}"
+                        <a href="{{ route('acercade') }}"
                             class="px-4 py-2 text-green-100 hover:text-white hover:bg-gradient-to-r hover:from-emerald-600 hover:to-emerald-700 rounded-lg transition-all duration-200 font-medium hover:shadow-md">
-                            Proyectos
+                            Acerca De
                         </a>
                     </li>
-                    <li>
-                        <a href="{{ route('testimonios') }}"
-                            class="px-4 py-2 text-green-100 hover:text-white hover:bg-gradient-to-r hover:from-emerald-600 hover:to-emerald-700 rounded-lg transition-all duration-200 font-medium hover:shadow-md">
-                            Testimonios
-                        </a>
+
+                    <!-- Dropdown Menu -->
+                    <li class="relative dropdown">
+                        <button id="dropdown-toggle"
+                            class="px-4 py-2 text-green-100 hover:text-white hover:bg-gradient-to-r hover:from-emerald-600 hover:to-emerald-700 rounded-lg transition-all duration-200 font-medium hover:shadow-md flex items-center">
+                            Más
+                            <svg id="dropdown-arrow" class="w-4 h-4 ml-1 transition-transform duration-200"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div id="dropdown-menu"
+                            class="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible transition-all duration-200 z-50">
+                            <div class="py-2">
+                                <a href="{{ route('galeria') }}"
+                                    class="block px-4 py-2 text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors duration-200">
+                                    Galería
+                                </a>
+                                <a href="{{ route('proyectos') }}"
+                                    class="block px-4 py-2 text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors duration-200">
+                                    Proyectos
+                                </a>
+                                <a href="{{ route('testimonios') }}"
+                                    class="block px-4 py-2 text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors duration-200">
+                                    Testimonios
+                                </a>
+                            </div>
+                        </div>
                     </li>
+
                     <li>
                         <a href="{{ route('donacion') }}"
                             class="px-4 py-2 text-green-100 hover:text-white hover:bg-gradient-to-r hover:from-emerald-600 hover:to-emerald-700 rounded-lg transition-all duration-200 font-medium hover:shadow-md">
@@ -113,18 +138,42 @@
                     class="block px-4 py-3 text-gray-200 hover:bg-custom-primary/50 hover:text-white rounded-lg transition-all duration-200 font-medium mx-2">
                     Estadísticas
                 </a>
-                <a href="{{ route('galeria') }}"
-                    class="block px-4 py-3 text-gray-200 hover:bg-custom-primary/50 hover:text-white rounded-lg transition-all duration-200 font-medium mx-2">
-                    Galería
+                <a href="{{ route('pec') }}"
+                    class="block px-4 py-3 text-green-100 hover:text-white hover:bg-gradient-to-r hover:from-emerald-600 hover:to-emerald-700 rounded-lg transition-all duration-200 font-medium hover:shadow-md mx-2">
+                    PEC
                 </a>
-                <a href="{{ route('proyectos') }}"
-                    class="block px-4 py-3 text-gray-200 hover:bg-custom-primary/50 hover:text-white rounded-lg transition-all duration-200 font-medium mx-2">
-                    Proyectos
+                <a href="{{ route('acercade') }}"
+                    class="block px-4 py-3 text-green-100 hover:text-white hover:bg-gradient-to-r hover:from-emerald-600 hover:to-emerald-700 rounded-lg transition-all duration-200 font-medium hover:shadow-md mx-2">
+                    Acerca De
                 </a>
-                <a href="{{ route('testimonios') }}"
-                    class="block px-4 py-3 text-gray-200 hover:bg-custom-primary/50 hover:text-white rounded-lg transition-all duration-200 font-medium mx-2">
-                    Testimonios
-                </a>
+
+                <!-- Mobile Dropdown Menu -->
+                <div class="mobile-dropdown mx-2">
+                    <button id="mobile-dropdown-toggle"
+                        class="w-full text-left px-4 py-3 text-gray-200 hover:bg-custom-primary/50 hover:text-white rounded-lg transition-all duration-200 font-medium flex items-center justify-between">
+                        Más
+                        <svg id="mobile-dropdown-arrow" class="w-4 h-4 transition-transform duration-200" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
+                    </button>
+                    <div id="mobile-dropdown-menu" class="hidden ml-4 mt-2 space-y-1">
+                        <a href="{{ route('galeria') }}"
+                            class="block px-4 py-2 text-gray-300 hover:bg-custom-primary/30 hover:text-white rounded-lg transition-all duration-200">
+                            Galería
+                        </a>
+                        <a href="{{ route('proyectos') }}"
+                            class="block px-4 py-2 text-gray-300 hover:bg-custom-primary/30 hover:text-white rounded-lg transition-all duration-200">
+                            Proyectos
+                        </a>
+                        <a href="{{ route('testimonios') }}"
+                            class="block px-4 py-2 text-gray-300 hover:bg-custom-primary/30 hover:text-white rounded-lg transition-all duration-200">
+                            Testimonios
+                        </a>
+                    </div>
+                </div>
+
                 <a href="{{ route('donacion') }}"
                     class="block px-4 py-3 text-gray-200 hover:bg-custom-primary/50 hover:text-white rounded-lg transition-all duration-200 font-medium mx-2">
                     Donar Dispositivo
@@ -159,6 +208,46 @@
 </nav>
 
 <script>
+    // Desktop dropdown functionality
+    const dropdownToggle = document.getElementById('dropdown-toggle');
+    const dropdownMenu = document.getElementById('dropdown-menu');
+    const dropdownArrow = document.getElementById('dropdown-arrow');
+    const dropdown = document.querySelector('.dropdown');
+
+    let dropdownTimeout;
+
+    // Show dropdown on hover
+    dropdown.addEventListener('mouseenter', function() {
+        clearTimeout(dropdownTimeout);
+        dropdownMenu.classList.remove('opacity-0', 'invisible');
+        dropdownMenu.classList.add('opacity-100', 'visible');
+        dropdownArrow.style.transform = 'rotate(180deg)';
+    });
+
+    // Hide dropdown when leaving the entire dropdown area with delay
+    dropdown.addEventListener('mouseleave', function() {
+        dropdownTimeout = setTimeout(function() {
+            dropdownMenu.classList.add('opacity-0', 'invisible');
+            dropdownMenu.classList.remove('opacity-100', 'visible');
+            dropdownArrow.style.transform = 'rotate(0deg)';
+        }, 300); // 300ms delay
+    });
+
+    // Mobile dropdown functionality
+    const mobileDropdownToggle = document.getElementById('mobile-dropdown-toggle');
+    const mobileDropdownMenu = document.getElementById('mobile-dropdown-menu');
+    const mobileDropdownArrow = document.getElementById('mobile-dropdown-arrow');
+
+    mobileDropdownToggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        mobileDropdownMenu.classList.toggle('hidden');
+        if (mobileDropdownMenu.classList.contains('hidden')) {
+            mobileDropdownArrow.style.transform = 'rotate(0deg)';
+        } else {
+            mobileDropdownArrow.style.transform = 'rotate(180deg)';
+        }
+    });
+
     // Mobile menu toggle
     document.getElementById('mobile-menu-button').addEventListener('click', function() {
         const mobileMenu = document.getElementById('mobile-menu');
@@ -172,6 +261,9 @@
 
         if (!mobileMenu.contains(event.target) && !mobileMenuButton.contains(event.target)) {
             mobileMenu.classList.add('hidden');
+            // Also close mobile dropdown when mobile menu closes
+            mobileDropdownMenu.classList.add('hidden');
+            mobileDropdownArrow.style.transform = 'rotate(0deg)';
         }
     });
 
@@ -223,6 +315,10 @@
         background-color: rgba(12, 112, 117, 0.5);
     }
 
+    .hover\\:bg-custom-primary\\/30:hover {
+        background-color: rgba(12, 112, 117, 0.3);
+    }
+
     .border-custom-medium\\/30 {
         border-color: rgba(17, 92, 95, 0.3);
     }
@@ -235,8 +331,8 @@
         --tw-ring-color: rgba(12, 112, 117, 0.5);
     }
 
-    .bg-custom-primary\\/30 {
-        background-color: rgba(12, 112, 117, 0.3);
+    .bg-custom-primary\\/20 {
+        background-color: rgba(12, 112, 117, 0.2);
     }
 
     /* Subtle animations */
