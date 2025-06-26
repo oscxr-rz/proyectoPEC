@@ -38,7 +38,7 @@
             </li>
 
             <li class="flex-shrink-0">
-                <a href="{{ route('admin.inventario') }}"
+                <a href="{{ route('admin.categorias') }}"
                     class="group flex items-center gap-2 sm:gap-3 px-3 sm:px-5 py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-white/8 hover:bg-white/15 text-white/90 hover:text-white transition-all duration-500 hover:scale-105 hover:shadow-lg hover:shadow-white/10 border border-white/10 hover:border-white/20 backdrop-blur-sm">
                     <div class="p-1 rounded-lg bg-white/10 group-hover:bg-white/20 transition-all duration-300">
                         <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -75,20 +75,6 @@
                         </svg>
                     </div>
                     <span class="text-xs sm:text-sm font-medium tracking-wide whitespace-nowrap">Donaciones</span>
-                </a>
-            </li>
-
-            <li class="flex-shrink-0">
-                <a href="{{ route('admin.estadisticas') }}"
-                    class="group flex items-center gap-2 sm:gap-3 px-3 sm:px-5 py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-white/8 hover:bg-white/15 text-white/90 hover:text-white transition-all duration-500 hover:scale-105 hover:shadow-lg hover:shadow-white/10 border border-white/10 hover:border-white/20 backdrop-blur-sm">
-                    <div class="p-1 rounded-lg bg-white/10 group-hover:bg-white/20 transition-all duration-300">
-                        <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
-                            </path>
-                        </svg>
-                    </div>
-                    <span class="text-xs sm:text-sm font-medium tracking-wide whitespace-nowrap">Estadísticas</span>
                 </a>
             </li>
 

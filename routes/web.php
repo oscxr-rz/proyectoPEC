@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminCategoriasController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminDonacionesController;
 use App\Http\Controllers\Admin\AdminEstadisticasController;
@@ -85,7 +86,10 @@ Route::prefix('/admin')->middleware([AuthAdmin::class])->group(function () {
     Route::get('/donaciones', [AdminDonacionesController::class, 'index'])->name('admin.donaciones');
     Route::put('/donaciones', [AdminDonacionesController::class, 'update'])->name('admin.donaciones.put');
 
-    Route::get('/estadisticas', [AdminEstadisticasController::class, 'index'])->name('admin.estadisticas');
+    //Categorias
+    Route::get('/categorias', [AdminCategoriasController::class, 'index'])->name('admin.categorias');
+    Route::post('/categorias', [AdminCategoriasController::class, 'create'])->name('admin.categorias.post');
+    Route::delete('/categorias', [AdminCategoriasController::class, 'delete'])->name('admin.categorias.delete');
 
     //Ventas
     Route::get('/ventas', [AdminVentasController::class, 'index'])->name('admin.ventas');

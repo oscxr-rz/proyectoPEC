@@ -158,16 +158,19 @@
                         <div>
                             <h3 class="text-2xl font-bold mb-6 text-white">🚀 Planeación del proyecto del grupo 4-D</h3>
                             <p class="text-lg leading-relaxed text-gray-100">
-                                El proyecto consiste en la creación de una página web enlazada a la
-                                página principal del CBTis150. Como parte de una campaña de la basura tecnológica con el
-                                fin de poner en marcha un centro de acopio de residuos tecnológicos que funcionara junto
-                                a este proyecto de la página web. Este proyecto incluye la creación de la página con
-                                fines educativos, la solicitud de la página dada por el cliente fue clara se necesita
-                                una página web que puede ayudar con el registro de basura tecnológica para su donación
-                                al plantel educativo como una forma de presentar más información acerca del tema y
-                                mostrar algunos trabajos de las demás especialidades con el fin de promover y fomentar
-                                que es la basura tecnológica y donde esta tiene que ser depositada en lugares
-                                apropiados, para ellos se hablara más acerca de las tecnologías y metodologías usadas.
+                                El proyecto consiste en la creación de una página web enlazada al sitio principal del
+                                CBTis 150, como parte de una campaña sobre la basura tecnológica. El objetivo es poner
+                                en marcha un centro de acopio de residuos tecnológicos que funcione en conjunto con esta
+                                página.
+
+                                La página web tendrá fines educativos. La solicitud del cliente fue clara: se requiere
+                                una plataforma que permita registrar residuos tecnológicos para su donación al plantel
+                                educativo. Además, servirá para brindar información sobre el tema, así como para mostrar
+                                trabajos realizados por otras especialidades, con el propósito de promover y fomentar la
+                                correcta disposición de la basura tecnológica en lugares adecuados.
+
+                                Asimismo, se explicarán las tecnologías y metodologías utilizadas en el desarrollo del
+                                proyecto.
                             </p>
                         </div>
                     </div>
@@ -183,9 +186,9 @@
                     <div class="text-center mb-8">
                         <h3 class="text-3xl font-bold text-white mb-4">🏛️ Organización por Tribus</h3>
                         <p class="text-lg leading-relaxed text-gray-200 max-w-4xl mx-auto">
-                            Las tribus son una de las partes más importantes del proyecto ya que con ellas se divide la
-                            carga del trabajo, a su vez que cada una está formada por un líder de equipo que ayuda al
-                            control de estas. Cada tribu está formada con todos los miembros del grupo 4D.
+                            Las tribus son una parte fundamental del proyecto, ya que permiten dividir la carga de
+                            trabajo. Cada tribu cuenta con un líder que facilita su organización y coordinación. Todas
+                            las tribus están integradas por los miembros del grupo 4D.
                         </p>
                     </div>
 
@@ -333,13 +336,13 @@
                             </div>
                             <div class="space-y-4 text-gray-100">
                                 <p class="text-lg leading-relaxed">
-                                    Para este proyecto usamos la metodología Scrum, que nos ayudó a organizarnos mejor y
-                                    trabajar por partes. Como el tiempo que teníamos era corto, solo 7 o 6 días,
-                                    dividimos el trabajo en tribus para hacerlo más rápido y sencillo.
+                                    Para este proyecto utilizamos la metodología Scrum, lo que nos permitió organizarnos
+                                    mejor y trabajar por etapas. Debido al tiempo limitado —solo 6 o 7 días—, dividimos
+                                    el trabajo en tribus para hacerlo más ágil y eficiente.
                                 </p>
                                 <p class="text-lg leading-relaxed">
-                                    Cada día revisábamos lo que habíamos hecho, lo que faltaba y si había algún
-                                    problema. Esto nos permitió mantenernos enfocados y aprovechar mejor el tiempo.
+                                    Cada día revisábamos los avances, lo pendiente y cualquier problema, lo que nos
+                                    ayudó a mantener el enfoque y aprovechar mejor el tiempo.
                                 </p>
                             </div>
                         </div>
@@ -508,11 +511,11 @@
                     </div>
                     <div class="max-w-4xl mx-auto">
                         <p class="text-base sm:text-lg leading-relaxed text-gray-200 text-center">
-                            MySQL es un sistema de gestión de bases de datos muy utilizada ya que nos permite almacenar
-                            y organizar información de manera eficiente. Laravel es un framework de desarrollo web en
-                            PHP que facilita la creación de aplicaciones al ofrecer herramientas y estructuras listas
-                            para usar, mientras que los frameworks de estilos nos ayudan a diseñar interfaces
-                            visualmente atractivas y responsivas.
+                            MySQL es un sistema de gestión de bases de datos muy utilizado, ya que permite almacenar y
+                            organizar información de forma eficiente. Laravel es un framework de desarrollo web en PHP
+                            que facilita la creación de aplicaciones al ofrecer herramientas y estructuras prediseñadas.
+                            Por su parte, los frameworks de estilos ayudan a diseñar interfaces visualmente atractivas y
+                            adaptables a distintos dispositivos.
                         </p>
                     </div>
                 </div>
